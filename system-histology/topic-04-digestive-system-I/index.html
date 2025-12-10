@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>System Histology – Digestive System I Quiz (Oral Cavity, Esophagus, Stomach)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: #f3f4f6;
+      color: #111827;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .quiz-wrapper {
+      background: #ffffff;
+      width: 100%;
+      max-width: 900px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .quiz-header {
+      background: #1d4ed8;
+      color: #ffffff;
+      padding: 16px 20px;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+
+    .quiz-logo {
+      height: 44px;
+      width: auto;
+      border-radius: 8px;
+      background: #ffffff;
+      padding: 4px 8px;
+    }
+
+    .quiz-header-texts {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .quiz-header-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .quiz-header-subtitle {
+      font-size: 0.9rem;
+      opacity: 0.95;
+    }
+
+    .quiz-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+      font-size: 0.8rem;
+      opacity: 0.9;
+    }
+
+    .quiz-meta span {
+      background: rgba(15, 23, 42, 0.12);
+      padding: 4px 8px;
+      border-radius: 999px;
+    }
+
+    .quiz-body {
+      padding: 16px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .progress {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    .timer {
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #fee2e2;
+      color: #b91c1c;
+    }
+
+    .progress-bar-track {
+      width: 100%;
+      height: 8px;
+      border-radius: 999px;
+      background: #e5e7eb;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: #1d4ed8;
+      transition: width 0.3s ease;
+    }
+
+    .question-card {
+      background: #eff6ff;
+      border-radius: 12px;
+      padding: 14px 14px 16px;
+      border: 1px solid #dbeafe;
+    }
+
+    .question-text {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 8px;
+    }
+
+    .question-subtitle {
+      font-size: 0.85rem;
+      color: #4b5563;
+      margin-bottom: 4px;
+    }
+
+    .options-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .option-btn {
+      width: 100%;
+      text-align: left;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      background: #ffffff;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+
+    .option-key {
+      font-weight: 700;
+      font-size: 0.85rem;
+      width: 18px;
+      text-align: center;
+      color: #4b5563;
+    }
+
+    .option-text {
+      flex: 1;
+      color: #111827;
+    }
+
+    .option-btn:hover {
+      background: #f9fafb;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06);
+    }
+
+    .option-btn.selected {
+      border-color: #1d4ed8;
+      background: #eff6ff;
+      box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.4);
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-primary {
+      background: #1d4ed8;
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: #1e40af;
+    }
+
+    .btn-secondary {
+      background: #e5e7eb;
+      color: #111827;
+    }
+
+    .btn-secondary:hover {
+      background: #d1d5db;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: #6b7280;
+    }
+
+    .btn-ghost:hover {
+      background: #f3f4f6;
+    }
+
+    .summary-card {
+      background: #ecfdf5;
+      border-radius: 12px;
+      padding: 14px 14px 16px;
+      border: 1px solid #bbf7d0;
+      margin-top: 4px;
+    }
+
+    .summary-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #065f46;
+      margin-bottom: 6px;
+    }
+
+    .summary-text {
+      font-size: 0.9rem;
+      color: #064e3b;
+      margin-bottom: 4px;
+    }
+
+    .score-highlight {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #15803d;
+    }
+
+    .upsell-card {
+      margin-top: 12px;
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px dashed #1d4ed8;
+      background: #eff6ff;
+    }
+
+    .upsell-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1d4ed8;
+      margin-bottom: 6px;
+    }
+
+    .upsell-list {
+      font-size: 0.9rem;
+      color: #1f2937;
+      margin-left: 16px;
+      margin-bottom: 10px;
+    }
+
+    .upsell-list li {
+      margin-bottom: 2px;
+    }
+
+    .upsell-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: #1d4ed8;
+      color: #ffffff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .upsell-btn:hover {
+      background: #1e40af;
+    }
+
+    .footer-note {
+      margin-top: 10px;
+      font-size: 0.75rem;
+      color: #9ca3af;
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      .quiz-logo {
+        height: 38px;
+      }
+      .quiz-header-title {
+        font-size: 1.05rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-wrapper">
+    <header class="quiz-header">
+      <div class="header-inner">
+        <img
+          src="http://easy-learns.com/wp-content/uploads/2025/12/logo-site-header.png"
+          alt="EasyLearn Academy Logo"
+          class="quiz-logo"
+        />
+        <div class="quiz-header-texts">
+          <div class="quiz-header-title">
+            System Histology – Digestive System I Quiz
+          </div>
+          <div class="quiz-header-subtitle">
+            Oral Cavity, Esophagus &amp; Stomach &middot; Free Topic-Based Quiz (No Explanations)
+          </div>
+        </div>
+      </div>
+      <div class="quiz-meta">
+        <span>Course: System Histology</span>
+        <span>Topic: Digestive I (Oral Cavity, Esophagus, Stomach)</span>
+        <span id="question-count-badge"></span>
+        <span>Time: 1.5 minutes/question</span>
+      </div>
+    </header>
+
+    <main class="quiz-body">
+      <div class="top-bar">
+        <div class="progress">
+          Question <span id="current-question">1</span> of
+          <span id="total-questions">0</span>
+        </div>
+        <div class="timer" id="timer">Time: --:--</div>
+      </div>
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progress-bar"></div>
+      </div>
+
+      <section id="question-section">
+        <div class="question-card">
+          <div class="question-subtitle" id="question-subtitle"></div>
+          <div class="question-text" id="question-text"></div>
+          <ul class="options-list" id="options-list">
+            <!-- options injected here -->
+          </ul>
+        </div>
+
+        <div class="nav-buttons">
+          <button class="btn btn-secondary" id="prev-btn">← Previous</button>
+          <div style="display:flex; gap:8px; margin-left:auto;">
+            <button class="btn btn-ghost" id="restart-btn">Restart</button>
+            <button class="btn btn-primary" id="next-btn">Next →</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="summary-section" style="display:none;">
+        <div class="summary-card">
+          <div class="summary-title">Quiz Completed</div>
+          <p class="summary-text">
+            Your score:
+            <span class="score-highlight" id="score-text"></span>
+          </p>
+          <p class="summary-text" id="details-text"></p>
+        </div>
+
+        <div class="upsell-card">
+          <div class="upsell-title">Want full explanations and real exam practice?</div>
+          <ul class="upsell-list">
+            <li>Final-style exam covering all 15 System Histology topics</li>
+            <li>Clinical scenarios and case-based questions</li>
+            <li>Full explanations for every question</li>
+            <li>Mixed-topic format similar to real final exams</li>
+          </ul>
+          <a
+            class="upsell-btn"
+            href="https://easy-learns.com/system-histology-final-style-exam/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Unlock Final-Style Exam (paid)
+          </a>
+        </div>
+
+        <div class="nav-buttons">
+          <button class="btn btn-secondary" id="review-btn">Review Questions</button>
+          <button class="btn btn-primary" id="retake-btn">Retake Quiz</button>
+        </div>
+
+        <div class="footer-note">
+          EasyLearn &middot; System Histology &middot; Digestive System I Quiz
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // ==========================
+    // QUESTION BANK – Digestive System I (Oral Cavity, Esophagus, Stomach)
+    // ==========================
+    const questions = [
+      {
+        q: "Which type of epithelium lines most of the oral cavity, including the inner cheeks and soft palate?",
+        subtitle: "Oral cavity lining epithelium",
+        options: [
+          "Keratinized stratified squamous epithelium",
+          "Nonkeratinized stratified squamous epithelium",
+          "Simple columnar epithelium",
+          "Pseudostratified ciliated columnar epithelium"
+        ],
+        answer: "Nonkeratinized stratified squamous epithelium"
+      },
+      {
+        q: "The filiform papillae of the tongue are best described as:",
+        subtitle: "Tongue papillae types",
+        options: [
+          "Large, mushroom-shaped papillae with many taste buds",
+          "Cone-shaped keratinized projections without taste buds",
+          "Large circumvallate structures surrounded by deep trenches",
+          "Leaf-like structures on the sides of the tongue rich in taste buds"
+        ],
+        answer: "Cone-shaped keratinized projections without taste buds"
+      },
+      {
+        q: "Which papillae of the tongue contain the majority of taste buds and are located anterior to the sulcus terminalis?",
+        subtitle: "Taste bud distribution",
+        options: [
+          "Filiform papillae",
+          "Fungiform papillae",
+          "Circumvallate (vallate) papillae",
+          "Foliate papillae"
+        ],
+        answer: "Circumvallate (vallate) papillae"
+      },
+      {
+        q: "Which major salivary gland is composed predominantly of serous acini and secretes a watery, enzyme-rich saliva?",
+        subtitle: "Salivary gland types",
+        options: [
+          "Parotid gland",
+          "Submandibular gland",
+          "Sublingual gland",
+          "Minor labial glands"
+        ],
+        answer: "Parotid gland"
+      },
+      {
+        q: "Which salivary gland has mixed serous and mucous acini, with serous demilunes often seen in sections?",
+        subtitle: "Mixed salivary glands",
+        options: [
+          "Parotid gland",
+          "Submandibular gland",
+          "Sublingual gland",
+          "Von Ebner’s glands"
+        ],
+        answer: "Submandibular gland"
+      },
+      {
+        q: "The esophagus is lined by which type of epithelium?",
+        subtitle: "Esophageal lining",
+        options: [
+          "Keratinized stratified squamous epithelium",
+          "Nonkeratinized stratified squamous epithelium",
+          "Simple columnar epithelium",
+          "Transitional epithelium"
+        ],
+        answer: "Nonkeratinized stratified squamous epithelium"
+      },
+      {
+        q: "Which histologic feature helps distinguish the esophagus from the stomach at the gastroesophageal junction?",
+        subtitle: "Gastroesophageal junction",
+        options: [
+          "Transition from stratified squamous to simple columnar epithelium",
+          "Appearance of crypts of Lieberkühn",
+          "Presence of Peyer patches",
+          "Loss of muscularis mucosae"
+        ],
+        answer: "Transition from stratified squamous to simple columnar epithelium"
+      },
+      {
+        q: "In the lower esophagus, the muscularis externa typically consists of:",
+        subtitle: "Muscle types in esophagus",
+        options: [
+          "Entirely skeletal muscle",
+          "Entirely smooth muscle",
+          "Inner circular skeletal and outer longitudinal smooth muscle",
+          "Inner circular smooth and outer longitudinal skeletal muscle"
+        ],
+        answer: "Entirely smooth muscle"
+      },
+      {
+        q: "Which region of the stomach contains short pits and long glands dominated by mucous cells producing a more alkaline mucus?",
+        subtitle: "Anatomic regions of stomach",
+        options: [
+          "Cardiac region",
+          "Fundus",
+          "Body",
+          "Pylorus"
+        ],
+        answer: "Pylorus"
+      },
+      {
+        q: "The fundic (gastric) glands of the body of the stomach contain which cells responsible for secreting hydrochloric acid and intrinsic factor?",
+        subtitle: "Parietal cell function",
+        options: [
+          "Chief (zymogenic) cells",
+          "Parietal (oxyntic) cells",
+          "Mucous neck cells",
+          "Enteroendocrine cells"
+        ],
+        answer: "Parietal (oxyntic) cells"
+      },
+      {
+        q: "Which stomach cells are primarily responsible for secreting pepsinogen, the precursor of pepsin?",
+        subtitle: "Chief cell function",
+        options: [
+          "Surface mucous cells",
+          "Parietal cells",
+          "Chief (zymogenic) cells",
+          "G cells"
+        ],
+        answer: "Chief (zymogenic) cells"
+      },
+      {
+        q: "Which of the following correctly describes the muscularis externa of the stomach?",
+        subtitle: "Stomach muscle layers",
+        options: [
+          "Single layer of circular smooth muscle",
+          "Inner oblique, middle circular, and outer longitudinal smooth muscle layers",
+          "Two layers of skeletal muscle",
+          "Alternating skeletal and smooth muscle bundles"
+        ],
+        answer: "Inner oblique, middle circular, and outer longitudinal smooth muscle layers"
+      },
+      {
+        q: "A biopsy from the gastric mucosa shows numerous parietal cells. These cells are characterized histologically by:",
+        subtitle: "Parietal cell morphology",
+        options: [
+          "Basophilic cytoplasm rich in rough ER and apical zymogen granules",
+          "Eosinophilic cytoplasm with intracellular canaliculi and many mitochondria",
+          "Clear cytoplasm with large lipid droplets",
+          "Dark nuclei and scant agranular cytoplasm"
+        ],
+        answer: "Eosinophilic cytoplasm with intracellular canaliculi and many mitochondria"
+      },
+      {
+        q: "Which specialized endocrine cells in the pyloric region secrete gastrin into the bloodstream?",
+        subtitle: "G cell function",
+        options: [
+          "D cells",
+          "G cells",
+          "Chief cells",
+          "Paneth cells"
+        ],
+        answer: "G cells"
+      },
+      {
+        q: "In the stomach, surface mucous cells primarily function to:",
+        subtitle: "Surface mucous cell role",
+        options: [
+          "Produce pepsinogen for protein digestion",
+          "Secrete hydrochloric acid for food breakdown",
+          "Form a protective alkaline mucus layer over the epithelium",
+          "Transport vitamin B12 across the epithelium"
+        ],
+        answer: "Form a protective alkaline mucus layer over the epithelium"
+      },
+      {
+        q: "A 50-year-old man has chronic gastroesophageal reflux disease (GERD). Which histologic change is often seen in the distal esophagus in long-standing reflux?",
+        subtitle: "Case: Barrett esophagus",
+        options: [
+          "Replacement of squamous epithelium by nonciliated pseudostratified epithelium",
+          "Metaplasia to simple columnar epithelium with goblet cells",
+          "Loss of muscularis mucosae and submucosa",
+          "Complete keratinization of stratified squamous epithelium"
+        ],
+        answer: "Metaplasia to simple columnar epithelium with goblet cells"
+      },
+      {
+        q: "A patient with autoimmune destruction of parietal cells is most likely to develop which condition?",
+        subtitle: "Case: parietal cell loss",
+        options: [
+          "Iron deficiency anemia",
+          "Megaloblastic anemia due to vitamin B12 deficiency",
+          "Hemolytic anemia",
+          "Thalassemia minor"
+        ],
+        answer: "Megaloblastic anemia due to vitamin B12 deficiency"
+      },
+      {
+        q: "A 35-year-old woman presents with a peptic ulcer in the duodenum due to excessive gastric acid. Which stomach cell type is the main target for drugs that reduce acid secretion (e.g., proton pump inhibitors)?",
+        subtitle: "Case: acid secretion control",
+        options: [
+          "Chief cells",
+          "Parietal cells",
+          "Surface mucous cells",
+          "Enteroendocrine D cells"
+        ],
+        answer: "Parietal cells"
+      },
+      {
+        q: "A biopsy from the stomach shows atrophic mucosa with loss of parietal cells and decreased rugal folds. Which general change best describes this histologic appearance?",
+        subtitle: "Case: chronic atrophic gastritis",
+        options: [
+          "Hyperplasia of mucous neck cells with increased acid",
+          "Atrophy of gastric glands with reduced acid and intrinsic factor production",
+          "Thickening of muscularis externa with increased motility",
+          "Replacement of mucosa by keratinized stratified squamous epithelium"
+        ],
+        answer: "Atrophy of gastric glands with reduced acid and intrinsic factor production"
+      },
+      {
+        q: "A 45-year-old patient has an ulcer at the lesser curvature of the stomach. Which layer, if eroded, would cause life-threatening hemorrhage?",
+        subtitle: "Case: gastric ulcer complications",
+        options: [
+          "Surface epithelium only",
+          "Lamina propria",
+          "Muscularis mucosae",
+          "Submucosa with large blood vessels"
+        ],
+        answer: "Submucosa with large blood vessels"
+      }
+    ];
+
+    // ==========================
+    // QUIZ LOGIC
+    // ==========================
+    const totalQuestions = questions.length;
+    const timePerQuestionSeconds = 90; // 1.5 minutes
+    const totalTimeSeconds = totalQuestions * timePerQuestionSeconds;
+
+    let currentQuestionIndex = 0;
+    let userAnswers = new Array(totalQuestions).fill(null);
+    let timerInterval = null;
+    let remainingSeconds = totalTimeSeconds;
+    let quizFinished = false;
+
+    const currentQuestionSpan = document.getElementById("current-question");
+    const totalQuestionsSpan = document.getElementById("total-questions");
+    const timerSpan = document.getElementById("timer");
+    const progressBar = document.getElementById("progress-bar");
+    const questionText = document.getElementById("question-text");
+    const questionSubtitle = document.getElementById("question-subtitle");
+    const optionsList = document.getElementById("options-list");
+
+    const questionSection = document.getElementById("question-section");
+    const summarySection = document.getElementById("summary-section");
+    const scoreText = document.getElementById("score-text");
+    const detailsText = document.getElementById("details-text");
+    const questionCountBadge = document.getElementById("question-count-badge");
+
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const restartBtn = document.getElementById("restart-btn");
+    const reviewBtn = document.getElementById("review-btn");
+    const retakeBtn = document.getElementById("retake-btn");
+
+    function formatTime(seconds) {
+      const m = Math.floor(seconds / 60);
+      const s = seconds % 60;
+      return `${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
+    }
+
+    function updateTimerDisplay() {
+      timerSpan.textContent = `Time: ${formatTime(remainingSeconds)}`;
+    }
+
+    function startTimer() {
+      if (timerInterval) clearInterval(timerInterval);
+      updateTimerDisplay();
+      timerInterval = setInterval(() => {
+        if (remainingSeconds <= 0) {
+          clearInterval(timerInterval);
+          if (!quizFinished) {
+            finishQuiz();
+          }
+          return;
+        }
+        remainingSeconds--;
+        updateTimerDisplay();
+      }, 1000);
+    }
+
+    function updateProgressBar() {
+      const answeredCount = userAnswers.filter(a => a !== null).length;
+      const progressPercent = (answeredCount / totalQuestions) * 100;
+      progressBar.style.width = `${progressPercent}%`;
+    }
+
+    function renderQuestion() {
+      const q = questions[currentQuestionIndex];
+      currentQuestionSpan.textContent = currentQuestionIndex + 1;
+      totalQuestionsSpan.textContent = totalQuestions;
+      questionText.textContent = q.q;
+      questionSubtitle.textContent = q.subtitle || "";
+
+      optionsList.innerHTML = "";
+      const keys = ["A", "B", "C", "D"];
+
+      q.options.forEach((opt, index) => {
+        const li = document.createElement("li");
+        const btn = document.createElement("button");
+        btn.className = "option-btn";
+        btn.dataset.index = index;
+
+        const keySpan = document.createElement("span");
+        keySpan.className = "option-key";
+        keySpan.textContent = keys[index] || "";
+
+        const textSpan = document.createElement("span");
+        textSpan.className = "option-text";
+        textSpan.textContent = opt;
+
+        btn.appendChild(keySpan);
+        btn.appendChild(textSpan);
+
+        if (userAnswers[currentQuestionIndex] === index) {
+          btn.classList.add("selected");
+        }
+
+        btn.addEventListener("click", () => {
+          selectOption(index);
+        });
+
+        li.appendChild(btn);
+        optionsList.appendChild(li);
+      });
+
+      prevBtn.disabled = currentQuestionIndex === 0;
+      nextBtn.textContent =
+        currentQuestionIndex === totalQuestions - 1 ? "Submit Quiz" : "Next →";
+      updateProgressBar();
+    }
+
+    function selectOption(index) {
+      userAnswers[currentQuestionIndex] = index;
+
+      const buttons = optionsList.querySelectorAll(".option-btn");
+      buttons.forEach(btn => btn.classList.remove("selected"));
+      const selected = Array.from(buttons).find(
+        btn => Number(btn.dataset.index) === index
+      );
+      if (selected) {
+        selected.classList.add("selected");
+      }
+      updateProgressBar();
+    }
+
+    function goToNext() {
+      if (currentQuestionIndex === totalQuestions - 1) {
+        finishQuiz();
+      } else {
+        currentQuestionIndex++;
+        renderQuestion();
+      }
+    }
+
+    function goToPrevious() {
+      if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        renderQuestion();
+      }
+    }
+
+    function finishQuiz() {
+      quizFinished = true;
+      clearInterval(timerInterval);
+
+      let correctCount = 0;
+      questions.forEach((q, i) => {
+        const userIndex = userAnswers[i];
+        if (userIndex !== null && q.options[userIndex] === q.answer) {
+          correctCount++;
+        }
+      });
+
+      const percent = Math.round((correctCount / totalQuestions) * 100);
+      scoreText.textContent = `${correctCount} / ${totalQuestions} (${percent}%)`;
+
+      const answeredCount = userAnswers.filter(a => a !== null).length;
+      detailsText.textContent =
+        `You answered ${answeredCount} of ${totalQuestions} questions. ` +
+        `Review the quiz or retake it for more practice on this topic.`;
+
+      questionSection.style.display = "none";
+      summarySection.style.display = "block";
+      updateProgressBar();
+    }
+
+    function restartQuiz(fullReset = true) {
+      if (timerInterval) clearInterval(timerInterval);
+      if (fullReset) {
+        userAnswers = new Array(totalQuestions).fill(null);
+        currentQuestionIndex = 0;
+        remainingSeconds = totalTimeSeconds;
+        quizFinished = false;
+      }
+      questionSection.style.display = "block";
+      summarySection.style.display = "none";
+      renderQuestion();
+      startTimer();
+    }
+
+    // Event listeners
+    nextBtn.addEventListener("click", goToNext);
+    prevBtn.addEventListener("click", goToPrevious);
+    restartBtn.addEventListener("click", () => restartQuiz(true));
+    retakeBtn.addEventListener("click", () => restartQuiz(true));
+    reviewBtn.addEventListener("click", () => {
+      quizFinished = false;
+      questionSection.style.display = "block";
+      summarySection.style.display = "none";
+      renderQuestion();
+    });
+
+    // Init
+    totalQuestionsSpan.textContent = totalQuestions;
+    if (questionCountBadge) {
+      questionCountBadge.textContent = `${totalQuestions} questions`;
+    }
+    remainingSeconds = totalTimeSeconds;
+    renderQuestion();
+    startTimer();
+  </script>
+</body>
+</html>
