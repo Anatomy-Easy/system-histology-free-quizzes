@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>System Histology – Digestive System III: Liver & Gallbladder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: #f3f4f6;
+      color: #111827;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .quiz-wrapper {
+      background: #ffffff;
+      width: 100%;
+      max-width: 900px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .quiz-header {
+      background: #1d4ed8;
+      color: #ffffff;
+      padding: 16px 20px;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+
+    .quiz-logo {
+      height: 44px;
+      width: auto;
+      border-radius: 8px;
+      background: #ffffff;
+      padding: 4px 8px;
+    }
+
+    .quiz-header-texts {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .quiz-header-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .quiz-header-subtitle {
+      font-size: 0.9rem;
+      opacity: 0.95;
+    }
+
+    .quiz-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+      font-size: 0.8rem;
+      opacity: 0.9;
+    }
+
+    .quiz-meta span {
+      background: rgba(15, 23, 42, 0.12);
+      padding: 4px 8px;
+      border-radius: 999px;
+    }
+
+    .quiz-body {
+      padding: 16px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .progress {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    .timer {
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #fee2e2;
+      color: #b91c1c;
+    }
+
+    .progress-bar-track {
+      width: 100%;
+      height: 8px;
+      border-radius: 999px;
+      background: #e5e7eb;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: #1d4ed8;
+      transition: width 0.3s ease;
+    }
+
+    .question-card {
+      background: #eff6ff;
+      border-radius: 12px;
+      padding: 14px 14px 16px;
+      border: 1px solid #dbeafe;
+    }
+
+    .question-text {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 8px;
+    }
+
+    .question-subtitle {
+      font-size: 0.85rem;
+      color: #4b5563;
+      margin-bottom: 4px;
+    }
+
+    .options-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .option-btn {
+      width: 100%;
+      text-align: left;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      background: #ffffff;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+
+    .option-key {
+      font-weight: 700;
+      font-size: 0.85rem;
+      width: 18px;
+      text-align: center;
+      color: #4b5563;
+    }
+
+    .option-text {
+      flex: 1;
+      color: #111827;
+    }
+
+    .option-btn:hover {
+      background: #f9fafb;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06);
+    }
+
+    .option-btn.selected {
+      border-color: #1d4ed8;
+      background: #eff6ff;
+      box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.4);
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-primary {
+      background: #1d4ed8;
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: #1e40af;
+    }
+
+    .btn-secondary {
+      background: #e5e7eb;
+      color: #111827;
+    }
+
+    .btn-secondary:hover {
+      background: #d1d5db;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: #6b7280;
+    }
+
+    .btn-ghost:hover {
+      background: #f3f4f6;
+    }
+
+    .summary-card {
+      background: #ecfdf5;
+      border-radius: 12px;
+      padding: 14px 14px 16px;
+      border: 1px solid #bbf7d0;
+      margin-top: 4px;
+    }
+
+    .summary-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #065f46;
+      margin-bottom: 6px;
+    }
+
+    .summary-text {
+      font-size: 0.9rem;
+      color: #064e3b;
+      margin-bottom: 4px;
+    }
+
+    .score-highlight {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #15803d;
+    }
+
+    .upsell-card {
+      margin-top: 12px;
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px dashed #1d4ed8;
+      background: #eff6ff;
+    }
+
+    .upsell-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1d4ed8;
+      margin-bottom: 6px;
+    }
+
+    .upsell-list {
+      font-size: 0.9rem;
+      color: #1f2937;
+      margin-left: 16px;
+      margin-bottom: 10px;
+    }
+
+    .upsell-list li {
+      margin-bottom: 2px;
+    }
+
+    .upsell-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: #1d4ed8;
+      color: #ffffff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .upsell-btn:hover {
+      background: #1e40af;
+    }
+
+    .footer-note {
+      margin-top: 10px;
+      font-size: 0.75rem;
+      color: #9ca3af;
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      .quiz-logo {
+        height: 38px;
+      }
+      .quiz-header-title {
+        font-size: 1.05rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-wrapper">
+    <header class="quiz-header">
+      <div class="header-inner">
+        <img
+          src="http://easy-learns.com/wp-content/uploads/2025/12/logo-site-header.png"
+          alt="EasyLearn Academy Logo"
+          class="quiz-logo"
+        />
+        <div class="quiz-header-texts">
+          <div class="quiz-header-title">
+            System Histology – Digestive System III Quiz
+          </div>
+          <div class="quiz-header-subtitle">
+            Liver & Gallbladder &middot; Free Topic-Based Quiz (No Explanations)
+          </div>
+        </div>
+      </div>
+      <div class="quiz-meta">
+        <span>Course: System Histology</span>
+        <span>Topic: Digestive III (Liver & Gallbladder)</span>
+        <span id="question-count-badge"></span>
+        <span>Time: 1.5 minutes/question</span>
+      </div>
+    </header>
+
+    <main class="quiz-body">
+      <div class="top-bar">
+        <div class="progress">
+          Question <span id="current-question">1</span> of
+          <span id="total-questions">0</span>
+        </div>
+        <div class="timer" id="timer">Time: --:--</div>
+      </div>
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progress-bar"></div>
+      </div>
+
+      <section id="question-section">
+        <div class="question-card">
+          <div class="question-subtitle" id="question-subtitle"></div>
+          <div class="question-text" id="question-text"></div>
+          <ul class="options-list" id="options-list">
+            <!-- options injected here -->
+          </ul>
+        </div>
+
+        <div class="nav-buttons">
+          <button class="btn btn-secondary" id="prev-btn">← Previous</button>
+          <div style="display:flex; gap:8px; margin-left:auto;">
+            <button class="btn btn-ghost" id="restart-btn">Restart</button>
+            <button class="btn btn-primary" id="next-btn">Next →</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="summary-section" style="display:none;">
+        <div class="summary-card">
+          <div class="summary-title">Quiz Completed</div>
+          <p class="summary-text">
+            Your score:
+            <span class="score-highlight" id="score-text"></span>
+          </p>
+          <p class="summary-text" id="details-text"></p>
+        </div>
+
+        <div class="upsell-card">
+          <div class="upsell-title">Want full explanations and real exam practice?</div>
+          <ul class="upsell-list">
+            <li>Final-style exam covering all 15 System Histology topics</li>
+            <li>Clinical scenarios and case-based questions</li>
+            <li>Full explanations for every question</li>
+            <li>Mixed-topic format similar to real final exams</li>
+          </ul>
+          <a
+            class="upsell-btn"
+            href="https://easy-learns.com/system-histology-final-style-exam/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Unlock Final-Style Exam (paid)
+          </a>
+        </div>
+
+        <div class="nav-buttons">
+          <button class="btn btn-secondary" id="review-btn">Review Questions</button>
+          <button class="btn btn-primary" id="retake-btn">Retake Quiz</button>
+        </div>
+
+        <div class="footer-note">
+          EasyLearn &middot; System Histology &middot; Digestive System II Quiz
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // ==========================
+    // QUESTION BANK – Digestive System III (Liver & Gallbladder)
+    // ==========================
+    const questions = [
+  {
+    q: "Which structural unit of the liver is classically described as a hexagonal area centered on a central vein?",
+    subtitle: "Classical hepatic lobule",
+    options: [
+      "Portal lobule",
+      "Hepatic acinus",
+      "Classical hepatic lobule",
+      "Bile canaliculus"
+    ],
+    answer: "Classical hepatic lobule"
+  },
+  {
+    q: "In the classical hepatic lobule, blood flows from:",
+    subtitle: "Direction of blood flow",
+    options: [
+      "Central vein toward portal triads",
+      "Portal triads toward the central vein",
+      "Bile canaliculi toward sinusoids",
+      "Gallbladder toward liver sinusoids"
+    ],
+    answer: "Portal triads toward the central vein"
+  },
+  {
+    q: "Which components are typically found in a portal triad?",
+    subtitle: "Portal triad contents",
+    options: [
+      "Central vein, bile duct, lymphatic",
+      "Branch of hepatic artery, portal vein, bile duct",
+      "Hepatic vein, hepatic artery, central lymphatic",
+      "Bile canaliculus, sinusoid, central vein"
+    ],
+    answer: "Branch of hepatic artery, portal vein, bile duct"
+  },
+  {
+    q: "The hepatic sinusoids are best described as:",
+    subtitle: "Sinusoid characteristics",
+    options: [
+      "Continuous capillaries with thick basement membrane",
+      "Fenestrated capillaries without any gaps",
+      "Discontinuous capillaries with fenestrated endothelium and discontinuous basal lamina",
+      "Lymphatic capillaries lined by simple squamous epithelium"
+    ],
+    answer: "Discontinuous capillaries with fenestrated endothelium and discontinuous basal lamina"
+  },
+  {
+    q: "Which cell type spans the lumen of hepatic sinusoids and functions as a liver macrophage?",
+    subtitle: "Kupffer cells",
+    options: [
+      "Kupffer cells",
+      "Ito (stellate) cells",
+      "Cholangiocytes",
+      "Hepatic stellate myofibroblasts in the capsule"
+    ],
+    answer: "Kupffer cells"
+  },
+  {
+    q: "Ito (stellate) cells in the liver are primarily located in:",
+    subtitle: "Location of Ito cells",
+    options: [
+      "Space of Disse between hepatocytes and sinusoidal endothelium",
+      "Bile canaliculi between hepatocytes",
+      "Portal triads within the connective tissue",
+      "Central vein wall"
+    ],
+    answer: "Space of Disse between hepatocytes and sinusoidal endothelium"
+  },
+  {
+    q: "The main function of Ito (stellate) cells in a normal liver is to:",
+    subtitle: "Ito cell function",
+    options: [
+      "Phagocytose aged erythrocytes",
+      "Store vitamin A in lipid droplets",
+      "Produce bile acids",
+      "Secrete digestive enzymes"
+    ],
+    answer: "Store vitamin A in lipid droplets"
+  },
+  {
+    q: "Bile canaliculi are formed by:",
+    subtitle: "Bile canaliculi structure",
+    options: [
+      "Grooves between adjacent hepatocytes sealed by tight junctions",
+      "Endothelial cells lining the sinusoids",
+      "Simple cuboidal epithelium in the portal triads",
+      "Transitional epithelium between liver and gallbladder"
+    ],
+    answer: "Grooves between adjacent hepatocytes sealed by tight junctions"
+  },
+  {
+    q: "Which epithelial type lines the interlobular bile ducts in the portal triads?",
+    subtitle: "Bile duct epithelium",
+    options: [
+      "Stratified squamous epithelium",
+      "Simple cuboidal to low columnar epithelium",
+      "Pseudostratified ciliated epithelium",
+      "Transitional epithelium"
+    ],
+    answer: "Simple cuboidal to low columnar epithelium"
+  },
+  {
+    q: "Which model of liver organization emphasizes gradients of oxygen and nutrients from the portal triad to the central vein, dividing tissue into zones 1, 2, and 3?",
+    subtitle: "Hepatic acinus concept",
+    options: [
+      "Classical hepatic lobule",
+      "Portal lobule",
+      "Hepatic acinus",
+      "Bile lobule"
+    ],
+    answer: "Hepatic acinus"
+  },
+  {
+    q: "In the hepatic acinus model, which zone is most vulnerable to ischemic injury (low oxygen)?",
+    subtitle: "Zonal injury pattern",
+    options: [
+      "Zone 1 (periportal)",
+      "Zone 2 (midzonal)",
+      "Zone 3 (centrilobular)",
+      "All zones equally"
+    ],
+    answer: "Zone 3 (centrilobular)"
+  },
+  {
+    q: "In early congestive heart failure, which region of the liver is typically most affected, showing centrilobular congestion and necrosis?",
+    subtitle: "Case: hepatic congestion",
+    options: [
+      "Zone 1 (periportal)",
+      "Zone 2 (midzonal)",
+      "Zone 3 (centrilobular around central veins)",
+      "Portal triad region only"
+    ],
+    answer: "Zone 3 (centrilobular around central veins)"
+  },
+  {
+    q: "In cirrhosis, Ito (stellate) cells become activated and transform into:",
+    subtitle: "Case: fibrosis in cirrhosis",
+    options: [
+      "Kupffer cells producing cytokines",
+      "Myofibroblast-like cells producing excess collagen",
+      "Hepatocytes with increased bile secretion",
+      "Cholangiocytes lining canaliculi"
+    ],
+    answer: "Myofibroblast-like cells producing excess collagen"
+  },
+  {
+    q: "Which of the following best describes the normal epithelium of the gallbladder mucosa?",
+    subtitle: "Gallbladder epithelium",
+    options: [
+      "Stratified squamous epithelium",
+      "Simple cuboidal epithelium with microvilli",
+      "Simple columnar epithelium with apical microvilli",
+      "Pseudostratified ciliated columnar epithelium"
+    ],
+    answer: "Simple columnar epithelium with apical microvilli"
+  },
+  {
+    q: "The primary function of the gallbladder mucosa is to:",
+    subtitle: "Gallbladder function",
+    options: [
+      "Produce bile acids",
+      "Concentrate and store bile by actively absorbing water and electrolytes",
+      "Detoxify drugs and toxins",
+      "Secrete digestive enzymes"
+    ],
+    answer: "Concentrate and store bile by actively absorbing water and electrolytes"
+  },
+  {
+    q: "Which layer is notably absent in the gallbladder wall over most of its surface?",
+    subtitle: "Gallbladder wall structure",
+    options: [
+      "Mucosa",
+      "Muscularis externa",
+      "Submucosa",
+      "Serosa or adventitia"
+    ],
+    answer: "Submucosa"
+  },
+  {
+    q: "In chronic cholecystitis, outpouchings of mucosa extending into the muscular layer of the gallbladder are called:",
+    subtitle: "Case: chronic cholecystitis",
+    options: [
+      "Peyer patches",
+      "Rokitansky–Aschoff sinuses",
+      "Space of Disse",
+      "Hassall corpuscles"
+    ],
+    answer: "Rokitansky–Aschoff sinuses"
+  },
+  {
+    q: "A 45-year-old woman with gallstones presents with right upper quadrant pain after fatty meals. Obstruction of which structure most directly prevents bile from entering the duodenum?",
+    subtitle: "Case: gallstones and ducts",
+    options: [
+      "Cystic duct",
+      "Common bile duct",
+      "Pancreatic duct",
+      "Interlobular bile duct"
+    ],
+    answer: "Common bile duct"
+  },
+  {
+    q: "A biopsy of the liver from a patient with obstructive jaundice shows bile plugs in canaliculi and expansion of portal tracts by edema. Which process is most directly impaired?",
+    subtitle: "Case: cholestasis",
+    options: [
+      "Blood flow from portal vein to central vein",
+      "Bile flow from hepatocytes to bile ducts",
+      "Vitamin A storage in Ito cells",
+      "Filtration of plasma in sinusoids"
+    ],
+    answer: "Bile flow from hepatocytes to bile ducts"
+  },
+  {
+    q: "In a healthy liver, which of the following best describes a normal hepatocyte?",
+    subtitle: "Hepatocyte morphology",
+    options: [
+      "Spindle-shaped cells with peripheral nuclei arranged in bundles",
+      "Large polygonal cells with central nuclei arranged in one-cell-thick plates",
+      "Small cuboidal cells forming acini around ducts",
+      "Multinucleated giant cells with abundant striations"
+    ],
+    answer: "Large polygonal cells with central nuclei arranged in one-cell-thick plates"
+  }
+];
+
+    // ==========================
+    // QUIZ LOGIC
+    // ==========================
+    const totalQuestions = questions.length;
+    const timePerQuestionSeconds = 90; // 1.5 minutes
+    const totalTimeSeconds = totalQuestions * timePerQuestionSeconds;
+
+    let currentQuestionIndex = 0;
+    let userAnswers = new Array(totalQuestions).fill(null);
+    let timerInterval = null;
+    let remainingSeconds = totalTimeSeconds;
+    let quizFinished = false;
+
+    const currentQuestionSpan = document.getElementById("current-question");
+    const totalQuestionsSpan = document.getElementById("total-questions");
+    const timerSpan = document.getElementById("timer");
+    const progressBar = document.getElementById("progress-bar");
+    const questionText = document.getElementById("question-text");
+    const questionSubtitle = document.getElementById("question-subtitle");
+    const optionsList = document.getElementById("options-list");
+
+    const questionSection = document.getElementById("question-section");
+    const summarySection = document.getElementById("summary-section");
+    const scoreText = document.getElementById("score-text");
+    const detailsText = document.getElementById("details-text");
+    const questionCountBadge = document.getElementById("question-count-badge");
+
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const restartBtn = document.getElementById("restart-btn");
+    const reviewBtn = document.getElementById("review-btn");
+    const retakeBtn = document.getElementById("retake-btn");
+
+    function formatTime(seconds) {
+      const m = Math.floor(seconds / 60);
+      const s = seconds % 60;
+      return `${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
+    }
+
+    function updateTimerDisplay() {
+      timerSpan.textContent = `Time: ${formatTime(remainingSeconds)}`;
+    }
+
+    function startTimer() {
+      if (timerInterval) clearInterval(timerInterval);
+      updateTimerDisplay();
+      timerInterval = setInterval(() => {
+        if (remainingSeconds <= 0) {
+          clearInterval(timerInterval);
+          if (!quizFinished) {
+            finishQuiz();
+          }
+          return;
+        }
+        remainingSeconds--;
+        updateTimerDisplay();
+      }, 1000);
+    }
+
+    function updateProgressBar() {
+      const answeredCount = userAnswers.filter(a => a !== null).length;
+      const progressPercent = (answeredCount / totalQuestions) * 100;
+      progressBar.style.width = `${progressPercent}%`;
+    }
+
+    function renderQuestion() {
+      const q = questions[currentQuestionIndex];
+      currentQuestionSpan.textContent = currentQuestionIndex + 1;
+      totalQuestionsSpan.textContent = totalQuestions;
+      questionText.textContent = q.q;
+      questionSubtitle.textContent = q.subtitle || "";
+
+      optionsList.innerHTML = "";
+      const keys = ["A", "B", "C", "D"];
+
+      q.options.forEach((opt, index) => {
+        const li = document.createElement("li");
+        const btn = document.createElement("button");
+        btn.className = "option-btn";
+        btn.dataset.index = index;
+
+        const keySpan = document.createElement("span");
+        keySpan.className = "option-key";
+        keySpan.textContent = keys[index] || "";
+
+        const textSpan = document.createElement("span");
+        textSpan.className = "option-text";
+        textSpan.textContent = opt;
+
+        btn.appendChild(keySpan);
+        btn.appendChild(textSpan);
+
+        if (userAnswers[currentQuestionIndex] === index) {
+          btn.classList.add("selected");
+        }
+
+        btn.addEventListener("click", () => {
+          selectOption(index);
+        });
+
+        li.appendChild(btn);
+        optionsList.appendChild(li);
+      });
+
+      prevBtn.disabled = currentQuestionIndex === 0;
+      nextBtn.textContent =
+        currentQuestionIndex === totalQuestions - 1 ? "Submit Quiz" : "Next →";
+      updateProgressBar();
+    }
+
+    function selectOption(index) {
+      userAnswers[currentQuestionIndex] = index;
+
+      const buttons = optionsList.querySelectorAll(".option-btn");
+      buttons.forEach(btn => btn.classList.remove("selected"));
+      const selected = Array.from(buttons).find(
+        btn => Number(btn.dataset.index) === index
+      );
+      if (selected) {
+        selected.classList.add("selected");
+      }
+      updateProgressBar();
+    }
+
+    function goToNext() {
+      if (currentQuestionIndex === totalQuestions - 1) {
+        finishQuiz();
+      } else {
+        currentQuestionIndex++;
+        renderQuestion();
+      }
+    }
+
+    function goToPrevious() {
+      if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        renderQuestion();
+      }
+    }
+
+    function finishQuiz() {
+      quizFinished = true;
+      clearInterval(timerInterval);
+
+      let correctCount = 0;
+      questions.forEach((q, i) => {
+        const userIndex = userAnswers[i];
+        if (userIndex !== null && q.options[userIndex] === q.answer) {
+          correctCount++;
+        }
+      });
+
+      const percent = Math.round((correctCount / totalQuestions) * 100);
+      scoreText.textContent = `${correctCount} / ${totalQuestions} (${percent}%)`;
+
+      const answeredCount = userAnswers.filter(a => a !== null).length;
+      detailsText.textContent =
+        `You answered ${answeredCount} of ${totalQuestions} questions. ` +
+        `Review the quiz or retake it for more practice on this topic.`;
+
+      questionSection.style.display = "none";
+      summarySection.style.display = "block";
+      updateProgressBar();
+    }
+
+    function restartQuiz(fullReset = true) {
+      if (timerInterval) clearInterval(timerInterval);
+      if (fullReset) {
+        userAnswers = new Array(totalQuestions).fill(null);
+        currentQuestionIndex = 0;
+        remainingSeconds = totalTimeSeconds;
+        quizFinished = false;
+      }
+      questionSection.style.display = "block";
+      summarySection.style.display = "none";
+      renderQuestion();
+      startTimer();
+    }
+
+    // Event listeners
+    nextBtn.addEventListener("click", goToNext);
+    prevBtn.addEventListener("click", goToPrevious);
+    restartBtn.addEventListener("click", () => restartQuiz(true));
+    retakeBtn.addEventListener("click", () => restartQuiz(true));
+    reviewBtn.addEventListener("click", () => {
+      quizFinished = false;
+      questionSection.style.display = "block";
+      summarySection.style.display = "none";
+      renderQuestion();
+    });
+
+    // Init
+    totalQuestionsSpan.textContent = totalQuestions;
+    if (questionCountBadge) {
+      questionCountBadge.textContent = `${totalQuestions} questions`;
+    }
+    remainingSeconds = totalTimeSeconds;
+    renderQuestion();
+    startTimer();
+  </script>
+</body>
+</html>
