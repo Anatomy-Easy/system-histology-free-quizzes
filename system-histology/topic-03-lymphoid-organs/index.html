@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>System Histology – Lymphoid Organs Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: #f3f4f6;
+      color: #111827;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .quiz-wrapper {
+      background: #ffffff;
+      width: 100%;
+      max-width: 900px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .quiz-header {
+      background: #1d4ed8;
+      color: #ffffff;
+      padding: 16px 20px;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+
+    .quiz-logo {
+      height: 44px;
+      width: auto;
+      border-radius: 8px;
+      background: #ffffff;
+      padding: 4px 8px;
+    }
+
+    .quiz-header-texts {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .quiz-header-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .quiz-header-subtitle {
+      font-size: 0.9rem;
+      opacity: 0.95;
+    }
+
+    .quiz-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+      font-size: 0.8rem;
+      opacity: 0.9;
+    }
+
+    .quiz-meta span {
+      background: rgba(15, 23, 42, 0.12);
+      padding: 4px 8px;
+      border-radius: 999px;
+    }
+
+    .quiz-body {
+      padding: 16px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .progress {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    .timer {
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #fee2e2;
+      color: #b91c1c;
+    }
+
+    .progress-bar-track {
+      width: 100%;
+      height: 8px;
+      border-radius: 999px;
+      background: #e5e7eb;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: #1d4ed8;
+      transition: width 0.3s ease;
+    }
+
+    .question-card {
+      background: #eff6ff;
+      border-radius: 12px;
+      padding: 14px 14px 16px;
+      border: 1px solid #dbeafe;
+    }
+
+    .question-text {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 8px;
+    }
+
+    .question-subtitle {
+      font-size: 0.85rem;
+      color: #4b5563;
+      margin-bottom: 4px;
+    }
+
+    .options-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .option-btn {
+      width: 100%;
+      text-align: left;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      background: #ffffff;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+
+    .option-key {
+      font-weight: 700;
+      font-size: 0.85rem;
+      width: 18px;
+      text-align: center;
+      color: #4b5563;
+    }
+
+    .option-text {
+      flex: 1;
+      color: #111827;
+    }
+
+    .option-btn:hover {
+      background: #f9fafb;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06);
+    }
+
+    .option-btn.selected {
+      border-color: #1d4ed8;
+      background: #eff6ff;
+      box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.4);
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-primary {
+      background: #1d4ed8;
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: #1e40af;
+    }
+
+    .btn-secondary {
+      background: #e5e7eb;
+      color: #111827;
+    }
+
+    .btn-secondary:hover {
+      background: #d1d5db;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: #6b7280;
+    }
+
+    .btn-ghost:hover {
+      background: #f3f4f6;
+    }
+
+    .summary-card {
+      background: #ecfdf5;
+      border-radius: 12px;
+      padding: 14px 14px 16px;
+      border: 1px solid #bbf7d0;
+      margin-top: 4px;
+    }
+
+    .summary-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #065f46;
+      margin-bottom: 6px;
+    }
+
+    .summary-text {
+      font-size: 0.9rem;
+      color: #064e3b;
+      margin-bottom: 4px;
+    }
+
+    .score-highlight {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #15803d;
+    }
+
+    .upsell-card {
+      margin-top: 12px;
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px dashed #1d4ed8;
+      background: #eff6ff;
+    }
+
+    .upsell-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1d4ed8;
+      margin-bottom: 6px;
+    }
+
+    .upsell-list {
+      font-size: 0.9rem;
+      color: #1f2937;
+      margin-left: 16px;
+      margin-bottom: 10px;
+    }
+
+    .upsell-list li {
+      margin-bottom: 2px;
+    }
+
+    .upsell-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: #1d4ed8;
+      color: #ffffff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .upsell-btn:hover {
+      background: #1e40af;
+    }
+
+    .footer-note {
+      margin-top: 10px;
+      font-size: 0.75rem;
+      color: #9ca3af;
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      .quiz-logo {
+        height: 38px;
+      }
+      .quiz-header-title {
+        font-size: 1.05rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-wrapper">
+    <header class="quiz-header">
+      <div class="header-inner">
+        <img
+          src="http://easy-learns.com/wp-content/uploads/2025/12/logo-site-header.png"
+          alt="EasyLearn Academy Logo"
+          class="quiz-logo"
+        />
+        <div class="quiz-header-texts">
+          <div class="quiz-header-title">System Histology – Lymphoid Organs Quiz</div>
+          <div class="quiz-header-subtitle">
+            Hematopoietic &amp; Lymphoid System II · Free Topic-Based Quiz (No Explanations)
+          </div>
+        </div>
+      </div>
+      <div class="quiz-meta">
+        <span>Course: System Histology</span>
+        <span>Topic: Lymphoid Organs (LN, Spleen, Thymus, MALT)</span>
+        <span id="question-count-badge"></span>
+        <span>Time: 1.5 minutes/question</span>
+      </div>
+    </header>
+
+    <main class="quiz-body">
+      <div class="top-bar">
+        <div class="progress">
+          Question <span id="current-question">1</span> of
+          <span id="total-questions">0</span>
+        </div>
+        <div class="timer" id="timer">Time: --:--</div>
+      </div>
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progress-bar"></div>
+      </div>
+
+      <section id="question-section">
+        <div class="question-card">
+          <div class="question-subtitle" id="question-subtitle"></div>
+          <div class="question-text" id="question-text"></div>
+          <ul class="options-list" id="options-list">
+            <!-- options injected here -->
+          </ul>
+        </div>
+
+        <div class="nav-buttons">
+          <button class="btn btn-secondary" id="prev-btn">← Previous</button>
+          <div style="display:flex; gap:8px; margin-left:auto;">
+            <button class="btn btn-ghost" id="restart-btn">Restart</button>
+            <button class="btn btn-primary" id="next-btn">Next →</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="summary-section" style="display:none;">
+        <div class="summary-card">
+          <div class="summary-title">Quiz Completed</div>
+          <p class="summary-text">
+            Your score:
+            <span class="score-highlight" id="score-text"></span>
+          </p>
+          <p class="summary-text" id="details-text"></p>
+        </div>
+
+        <div class="upsell-card">
+          <div class="upsell-title">Want full explanations and real exam practice?</div>
+          <ul class="upsell-list">
+            <li>Final-style exam covering all 15 System Histology topics</li>
+            <li>Clinical scenarios and case-based questions</li>
+            <li>Full explanations for every question</li>
+            <li>Mixed-topic format similar to real final exams</li>
+          </ul>
+          <a
+            class="upsell-btn"
+            href="https://easy-learns.com/system-histology-final-style-exam/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Unlock Final-Style Exam (paid)
+          </a>
+        </div>
+
+        <div class="nav-buttons">
+          <button class="btn btn-secondary" id="review-btn">Review Questions</button>
+          <button class="btn btn-primary" id="retake-btn">Retake Quiz</button>
+        </div>
+
+        <div class="footer-note">
+          EasyLearn &middot; System Histology &middot; Lymphoid Organs Quiz
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // ==========================
+    // QUESTION BANK – Lymphoid Organs
+    // ==========================
+    const questions = [
+      {
+        q: "Which of the following best describes the overall function of secondary lymphoid organs such as lymph nodes and spleen?",
+        subtitle: "Basic function of lymphoid organs",
+        options: [
+          "Production of all blood cells from stem cells",
+          "Filtration of lymph or blood and initiation of adaptive immune responses",
+          "Storage of iron and breakdown of hemoglobin only",
+          "Regulation of serum calcium and phosphate levels"
+        ],
+        answer: "Filtration of lymph or blood and initiation of adaptive immune responses"
+      },
+      {
+        q: "Which region of a lymph node is considered the primary site for B lymphocyte activation and proliferation?",
+        subtitle: "B cell-rich zone",
+        options: [
+          "Medullary cords",
+          "Paracortex",
+          "Superficial cortex with lymphoid follicles",
+          "Hilum"
+        ],
+        answer: "Superficial cortex with lymphoid follicles"
+      },
+      {
+        q: "The paracortex of a lymph node is mainly populated by which type of lymphocyte?",
+        subtitle: "T cell-rich zone",
+        options: [
+          "B lymphocytes forming germinal centers",
+          "T lymphocytes associated with high endothelial venules",
+          "Plasma cells secreting antibodies",
+          "Natural killer (NK) cells only"
+        ],
+        answer: "T lymphocytes associated with high endothelial venules"
+      },
+      {
+        q: "Which of the following correctly describes high endothelial venules (HEVs) in lymph nodes?",
+        subtitle: "HEV characteristics",
+        options: [
+          "Thin-walled vessels lined by simple squamous endothelium",
+          "Thick-walled arteries with prominent elastic lamina",
+          "Postcapillary venules lined by cuboidal endothelial cells that allow lymphocyte entry",
+          "Lymphatic vessels with valves that drain lymph from the node"
+        ],
+        answer: "Postcapillary venules lined by cuboidal endothelial cells that allow lymphocyte entry"
+      },
+      {
+        q: "In a reactive lymph node, which histologic feature indicates active B cell proliferation?",
+        subtitle: "Germinal centers",
+        options: [
+          "Pale-staining germinal centers in cortical lymphoid follicles",
+          "Thick capsule with abundant collagen",
+          "Numerous Hassall corpuscles",
+          "Expanded medullary sinuses filled with erythrocytes"
+        ],
+        answer: "Pale-staining germinal centers in cortical lymphoid follicles"
+      },
+      {
+        q: "Which of the following best describes the medulla of a lymph node?",
+        subtitle: "Medullary structure",
+        options: [
+          "Contains only adipose tissue and no lymphocytes",
+          "Composed of medullary cords rich in plasma cells and medullary sinuses",
+          "Consists of lymphoid nodules with germinal centers",
+          "Contains only T cells around central arteries"
+        ],
+        answer: "Composed of medullary cords rich in plasma cells and medullary sinuses"
+      },
+      {
+        q: "In the spleen, the periarteriolar lymphoid sheath (PALS) surrounding central arteries is mainly composed of:",
+        subtitle: "T cell zone in spleen",
+        options: [
+          "B lymphocytes forming germinal centers",
+          "T lymphocytes around the central arteriole",
+          "Plasma cells producing IgA",
+          "Neutrophils and eosinophils"
+        ],
+        answer: "T lymphocytes around the central arteriole"
+      },
+      {
+        q: "Which structure in the spleen is characterized by dense lymphoid tissue with central arteries and occasional germinal centers?",
+        subtitle: "White pulp",
+        options: [
+          "Red pulp",
+          "White pulp",
+          "Marginal zone sinuses",
+          "Trabecular veins"
+        ],
+        answer: "White pulp"
+      },
+      {
+        q: "The main function of the red pulp of the spleen is to:",
+        subtitle: "Red pulp function",
+        options: [
+          "Serve as the primary site of T-cell education",
+          "Filter blood, remove old erythrocytes, and act as a blood reservoir",
+          "Produce new erythrocytes during fetal life only",
+          "Filter lymph coming from peripheral tissues"
+        ],
+        answer: "Filter blood, remove old erythrocytes, and act as a blood reservoir"
+      },
+      {
+        q: "In the red pulp of the spleen, splenic cords (of Billroth) are best described as:",
+        subtitle: "Splenic cords",
+        options: [
+          "Vascular channels lined by fenestrated endothelium",
+          "Regions of dense collagen with few cells",
+          "Meshwork of reticular fibers containing macrophages, lymphocytes, and erythrocytes",
+          "Bundles of smooth muscle around central arteries"
+        ],
+        answer: "Meshwork of reticular fibers containing macrophages, lymphocytes, and erythrocytes"
+      },
+      {
+        q: "Which feature is characteristic of the thymus but not of lymph nodes or spleen?",
+        subtitle: "Unique thymic feature",
+        options: [
+          "Presence of a connective tissue capsule",
+          "Cortex and medulla",
+          "Hassall corpuscles in the medulla",
+          "Lymphoid follicles with germinal centers"
+        ],
+        answer: "Hassall corpuscles in the medulla"
+      },
+      {
+        q: "The thymic cortex is mainly responsible for which part of T-cell development?",
+        subtitle: "Thymic cortex role",
+        options: [
+          "Negative selection to remove self-reactive T cells",
+          "Positive selection of T cells that recognize self-MHC",
+          "Production of antibodies by plasma cells",
+          "Storage of memory B cells"
+        ],
+        answer: "Positive selection of T cells that recognize self-MHC"
+      },
+      {
+        q: "The blood–thymus barrier is important because it:",
+        subtitle: "Blood–thymus barrier function",
+        options: [
+          "Facilitates entry of mature lymphocytes into the thymus",
+          "Exposes immature T cells to circulating antigens early in life",
+          "Prevents circulating antigens from reaching developing T cells in the cortex",
+          "Allows erythrocytes to migrate into the thymic parenchyma"
+        ],
+        answer: "Prevents circulating antigens from reaching developing T cells in the cortex"
+      },
+      {
+        q: "Which of the following is a key component of mucosa-associated lymphoid tissue (MALT) in the ileum?",
+        subtitle: "MALT in gut",
+        options: [
+          "Hassall corpuscles",
+          "Peyer patches",
+          "PALS around central arteries",
+          "Medullary cords"
+        ],
+        answer: "Peyer patches"
+      },
+      {
+        q: "In the palatine tonsil, which histologic feature is typically present?",
+        subtitle: "Tonsil histology",
+        options: [
+          "Smooth luminal surface lined by simple squamous epithelium",
+          "Deep crypts lined by stratified squamous nonkeratinized epithelium",
+          "Thick keratinized stratified squamous epithelium with no crypts",
+          "Central arteries surrounded by PALS"
+        ],
+        answer: "Deep crypts lined by stratified squamous nonkeratinized epithelium"
+      },
+      {
+        q: "A 6-year-old child undergoes splenectomy after trauma. Which of the following long-term changes is expected?",
+        subtitle: "Case: splenectomy consequence",
+        options: [
+          "Increased risk of infections by encapsulated bacteria",
+          "Severe defects in T-cell development",
+          "Loss of all antibody production",
+          "Marked anemia due to loss of erythropoiesis"
+        ],
+        answer: "Increased risk of infections by encapsulated bacteria"
+      },
+      {
+        q: "A 10-year-old boy has recurrent viral infections and a chest X-ray shows absence of a thymic shadow. Histologically, which organ is likely to be deficient or absent?",
+        subtitle: "Case: immunodeficiency and thymus",
+        options: [
+          "Lymph nodes",
+          "Thymus",
+          "Spleen",
+          "Tonsils"
+        ],
+        answer: "Thymus"
+      },
+      {
+        q: "A patient with chronic lymphadenitis has enlarged, tender cervical lymph nodes. Which microscopic feature most likely explains the node enlargement?",
+        subtitle: "Case: reactive node",
+        options: [
+          "Atrophy of lymphoid follicles",
+          "Expansion of germinal centers and paracortex due to lymphocyte proliferation",
+          "Replacement of lymphoid tissue by adipose tissue",
+          "Loss of HEVs in the paracortex"
+        ],
+        answer: "Expansion of germinal centers and paracortex due to lymphocyte proliferation"
+      },
+      {
+        q: "In Hodgkin lymphoma, involved lymph nodes often show:",
+        subtitle: "Case: lymphoma change",
+        options: [
+          "Well-preserved nodal architecture with numerous germinal centers",
+          "Complete effacement of normal architecture with Reed–Sternberg cells",
+          "Extensive adipose replacement and no lymphoid cells",
+          "Numerous Hassall corpuscles in the cortex"
+        ],
+        answer: "Complete effacement of normal architecture with Reed–Sternberg cells"
+      },
+      {
+        q: "A biopsy shows lymphoid tissue beneath respiratory epithelium in the pharynx, with crypts and mixed B and T cells. This most likely represents:",
+        subtitle: "Case: Waldeyer’s ring",
+        options: [
+          "Palatine or pharyngeal tonsil as part of Waldeyer’s ring",
+          "Thymic cortex",
+          "PALS of the spleen",
+          "Peyer patch in the ileum"
+        ],
+        answer: "Palatine or pharyngeal tonsil as part of Waldeyer’s ring"
+      }
+    ];
+
+    // ==========================
+    // QUIZ LOGIC
+    // ==========================
+    const totalQuestions = questions.length;
+    const timePerQuestionSeconds = 90; // 1.5 minutes
+    const totalTimeSeconds = totalQuestions * timePerQuestionSeconds;
+
+    let currentQuestionIndex = 0;
+    let userAnswers = new Array(totalQuestions).fill(null);
+    let timerInterval = null;
+    let remainingSeconds = totalTimeSeconds;
+    let quizFinished = false;
+
+    const currentQuestionSpan = document.getElementById("current-question");
+    const totalQuestionsSpan = document.getElementById("total-questions");
+    const timerSpan = document.getElementById("timer");
+    const progressBar = document.getElementById("progress-bar");
+    const questionText = document.getElementById("question-text");
+    const questionSubtitle = document.getElementById("question-subtitle");
+    const optionsList = document.getElementById("options-list");
+
+    const questionSection = document.getElementById("question-section");
+    const summarySection = document.getElementById("summary-section");
+    const scoreText = document.getElementById("score-text");
+    const detailsText = document.getElementById("details-text");
+    const questionCountBadge = document.getElementById("question-count-badge");
+
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const restartBtn = document.getElementById("restart-btn");
+    const reviewBtn = document.getElementById("review-btn");
+    const retakeBtn = document.getElementById("retake-btn");
+
+    function formatTime(seconds) {
+      const m = Math.floor(seconds / 60);
+      const s = seconds % 60;
+      return `${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
+    }
+
+    function updateTimerDisplay() {
+      timerSpan.textContent = `Time: ${formatTime(remainingSeconds)}`;
+    }
+
+    function startTimer() {
+      if (timerInterval) clearInterval(timerInterval);
+      updateTimerDisplay();
+      timerInterval = setInterval(() => {
+        if (remainingSeconds <= 0) {
+          clearInterval(timerInterval);
+          if (!quizFinished) {
+            finishQuiz();
+          }
+          return;
+        }
+        remainingSeconds--;
+        updateTimerDisplay();
+      }, 1000);
+    }
+
+    function updateProgressBar() {
+      const answeredCount = userAnswers.filter(a => a !== null).length;
+      const progressPercent = (answeredCount / totalQuestions) * 100;
+      progressBar.style.width = `${progressPercent}%`;
+    }
+
+    function renderQuestion() {
+      const q = questions[currentQuestionIndex];
+      currentQuestionSpan.textContent = currentQuestionIndex + 1;
+      totalQuestionsSpan.textContent = totalQuestions;
+      questionText.textContent = q.q;
+      questionSubtitle.textContent = q.subtitle || "";
+
+      optionsList.innerHTML = "";
+      const keys = ["A", "B", "C", "D"];
+
+      q.options.forEach((opt, index) => {
+        const li = document.createElement("li");
+        const btn = document.createElement("button");
+        btn.className = "option-btn";
+        btn.dataset.index = index;
+
+        const keySpan = document.createElement("span");
+        keySpan.className = "option-key";
+        keySpan.textContent = keys[index] || "";
+
+        const textSpan = document.createElement("span");
+        textSpan.className = "option-text";
+        textSpan.textContent = opt;
+
+        btn.appendChild(keySpan);
+        btn.appendChild(textSpan);
+
+        if (userAnswers[currentQuestionIndex] === index) {
+          btn.classList.add("selected");
+        }
+
+        btn.addEventListener("click", () => {
+          selectOption(index);
+        });
+
+        li.appendChild(btn);
+        optionsList.appendChild(li);
+      });
+
+      prevBtn.disabled = currentQuestionIndex === 0;
+      nextBtn.textContent =
+        currentQuestionIndex === totalQuestions - 1 ? "Submit Quiz" : "Next →";
+      updateProgressBar();
+    }
+
+    function selectOption(index) {
+      userAnswers[currentQuestionIndex] = index;
+
+      const buttons = optionsList.querySelectorAll(".option-btn");
+      buttons.forEach(btn => btn.classList.remove("selected"));
+      const selected = Array.from(buttons).find(
+        btn => Number(btn.dataset.index) === index
+      );
+      if (selected) {
+        selected.classList.add("selected");
+      }
+      updateProgressBar();
+    }
+
+    function goToNext() {
+      if (currentQuestionIndex === totalQuestions - 1) {
+        finishQuiz();
+      } else {
+        currentQuestionIndex++;
+        renderQuestion();
+      }
+    }
+
+    function goToPrevious() {
+      if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        renderQuestion();
+      }
+    }
+
+    function finishQuiz() {
+      quizFinished = true;
+      clearInterval(timerInterval);
+
+      let correctCount = 0;
+      questions.forEach((q, i) => {
+        const userIndex = userAnswers[i];
+        if (userIndex !== null && q.options[userIndex] === q.answer) {
+          correctCount++;
+        }
+      });
+
+      const percent = Math.round((correctCount / totalQuestions) * 100);
+      scoreText.textContent = `${correctCount} / ${totalQuestions} (${percent}%)`;
+
+      const answeredCount = userAnswers.filter(a => a !== null).length;
+      detailsText.textContent =
+        `You answered ${answeredCount} of ${totalQuestions} questions. ` +
+        `Review the quiz or retake it for more practice on this topic.`;
+
+      questionSection.style.display = "none";
+      summarySection.style.display = "block";
+      updateProgressBar();
+    }
+
+    function restartQuiz(fullReset = true) {
+      if (timerInterval) clearInterval(timerInterval);
+      if (fullReset) {
+        userAnswers = new Array(totalQuestions).fill(null);
+        currentQuestionIndex = 0;
+        remainingSeconds = totalTimeSeconds;
+        quizFinished = false;
+      }
+      questionSection.style.display = "block";
+      summarySection.style.display = "none";
+      renderQuestion();
+      startTimer();
+    }
+
+    // Event listeners
+    nextBtn.addEventListener("click", goToNext);
+    prevBtn.addEventListener("click", goToPrevious);
+    restartBtn.addEventListener("click", () => restartQuiz(true));
+    retakeBtn.addEventListener("click", () => restartQuiz(true));
+    reviewBtn.addEventListener("click", () => {
+      quizFinished = false;
+      questionSection.style.display = "block";
+      summarySection.style.display = "none";
+      renderQuestion();
+    });
+
+    // Init
+    totalQuestionsSpan.textContent = totalQuestions;
+    if (questionCountBadge) {
+      questionCountBadge.textContent = `${totalQuestions} questions`;
+    }
+    remainingSeconds = totalTimeSeconds;
+    renderQuestion();
+    startTimer();
+  </script>
+</body>
+</html>
