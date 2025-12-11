@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>System Histology – Blood & Bone Marrow Quiz</title>
+  <title>System Histology – Hematopoietic & Lymphoid System I: Blood and Bone Marrow Quiz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     * {
@@ -64,6 +64,7 @@
     .quiz-header-title {
       font-size: 1.2rem;
       font-weight: 700;
+      margin-bottom: 4px;
     }
 
     .quiz-header-subtitle {
@@ -84,6 +85,12 @@
       background: rgba(15, 23, 42, 0.12);
       padding: 4px 8px;
       border-radius: 999px;
+    }
+
+    .quiz-note {
+      margin-top: 6px;
+      font-size: 0.8rem;
+      opacity: 0.9;
     }
 
     .quiz-body {
@@ -148,9 +155,8 @@
 
     .question-subtitle {
       font-size: 0.85rem;
-      color: #e5e7eb;
+      color: #4b5563;
       margin-bottom: 4px;
-      opacity: 0.92;
     }
 
     .options-list {
@@ -325,11 +331,19 @@
       text-align: center;
     }
 
+    .bottom-nav-wrapper {
+      margin-top: 6px;
+      text-align: right;
+    }
+
+    .bottom-nav-link {
+      font-size: 0.85rem;
+      color: #1d4ed8;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
     @media (max-width: 640px) {
-      .header-inner {
-        flex-direction: row;
-        align-items: center;
-      }
       .quiz-logo {
         height: 38px;
       }
@@ -349,18 +363,22 @@
           class="quiz-logo"
         />
         <div class="quiz-header-texts">
-          <div class="quiz-header-title">System Histology – Blood & Bone Marrow Quiz</div>
+          <div class="quiz-header-title">
+            System Histology – Hematopoietic & Lymphoid System I: Blood and Bone Marrow Quiz
+          </div>
           <div class="quiz-header-subtitle">
-            Hematopoietic & Lymphoid System I &middot; Free Topic-Based Quiz (No Explanations)
+            Free Topic-Based Quiz (No Explanations)
           </div>
         </div>
       </div>
       <div class="quiz-meta">
-        <span>Course: System Histology</span>
-        <span>Topic: Blood &amp; Bone Marrow</span>
+        <span>Topic: Hematopoietic & Lymphoid System I: Blood and Bone Marrow</span>
         <span id="question-count-badge"></span>
         <span>Time: 1.5 minutes/question</span>
       </div>
+      <p class="quiz-note">
+        This free quiz has no explanations. For full explanations and case-based practice, access the Premium version.
+      </p>
     </header>
 
     <main class="quiz-body">
@@ -379,9 +397,7 @@
         <div class="question-card">
           <div class="question-subtitle" id="question-subtitle"></div>
           <div class="question-text" id="question-text"></div>
-          <ul class="options-list" id="options-list">
-            <!-- options go here -->
-          </ul>
+          <ul class="options-list" id="options-list"></ul>
         </div>
 
         <div class="nav-buttons">
@@ -390,6 +406,15 @@
             <button class="btn btn-ghost" id="restart-btn">Restart</button>
             <button class="btn btn-primary" id="next-btn">Next →</button>
           </div>
+        </div>
+
+        <div class="bottom-nav-wrapper">
+          <a
+            href="https://easy-learns.com/system-histology/"
+            class="bottom-nav-link"
+          >
+            Back to System Histology Course
+          </a>
         </div>
       </section>
 
@@ -427,7 +452,7 @@
         </div>
 
         <div class="footer-note">
-          EasyLearn &middot; System Histology &middot; Blood &amp; Bone Marrow Quiz
+          EasyLearn · System Histology · Hematopoietic & Lymphoid System I: Blood and Bone Marrow Quiz
         </div>
       </section>
     </main>
