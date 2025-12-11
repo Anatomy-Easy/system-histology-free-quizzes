@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>System Histology – Digestive System I Quiz (Oral Cavity, Esophagus, Stomach)</title>
+  <title>System Histology – Digestive System I: Oral Cavity, Esophagus, and Stomach Quiz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     * {
@@ -85,6 +85,12 @@
       background: rgba(15, 23, 42, 0.12);
       padding: 4px 8px;
       border-radius: 999px;
+    }
+
+    .quiz-note {
+      margin-top: 6px;
+      font-size: 0.8rem;
+      opacity: 0.9;
     }
 
     .quiz-body {
@@ -325,6 +331,18 @@
       text-align: center;
     }
 
+    .bottom-nav-wrapper {
+      margin-top: 6px;
+      text-align: right;
+    }
+
+    .bottom-nav-link {
+      font-size: 0.85rem;
+      color: #1d4ed8;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
     @media (max-width: 640px) {
       .quiz-logo {
         height: 38px;
@@ -346,19 +364,21 @@
         />
         <div class="quiz-header-texts">
           <div class="quiz-header-title">
-            System Histology – Digestive System I Quiz
+            System Histology – Digestive System I: Oral Cavity, Esophagus, and Stomach Quiz
           </div>
           <div class="quiz-header-subtitle">
-            Oral Cavity, Esophagus &amp; Stomach &middot; Free Topic-Based Quiz (No Explanations)
+            Free Topic-Based Quiz (No Explanations)
           </div>
         </div>
       </div>
       <div class="quiz-meta">
-        <span>Course: System Histology</span>
-        <span>Topic: Digestive I (Oral Cavity, Esophagus, Stomach)</span>
+        <span>Topic: Digestive System I: Oral Cavity, Esophagus, and Stomach</span>
         <span id="question-count-badge"></span>
         <span>Time: 1.5 minutes/question</span>
       </div>
+      <p class="quiz-note">
+        This free quiz has no explanations. For full explanations and case-based practice, access the Premium version.
+      </p>
     </header>
 
     <main class="quiz-body">
@@ -377,9 +397,7 @@
         <div class="question-card">
           <div class="question-subtitle" id="question-subtitle"></div>
           <div class="question-text" id="question-text"></div>
-          <ul class="options-list" id="options-list">
-            <!-- options injected here -->
-          </ul>
+          <ul class="options-list" id="options-list"></ul>
         </div>
 
         <div class="nav-buttons">
@@ -388,6 +406,15 @@
             <button class="btn btn-ghost" id="restart-btn">Restart</button>
             <button class="btn btn-primary" id="next-btn">Next →</button>
           </div>
+        </div>
+
+        <div class="bottom-nav-wrapper">
+          <a
+            href="https://easy-learns.com/system-histology/"
+            class="bottom-nav-link"
+          >
+            Back to System Histology Course
+          </a>
         </div>
       </section>
 
@@ -425,7 +452,7 @@
         </div>
 
         <div class="footer-note">
-          EasyLearn &middot; System Histology &middot; Digestive System I Quiz
+          EasyLearn · System Histology · Digestive System I: Oral Cavity, Esophagus, and Stomach Quiz
         </div>
       </section>
     </main>
