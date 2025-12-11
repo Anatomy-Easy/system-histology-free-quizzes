@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>System Histology – Digestive System IV: Pancreas & Salivary Glands</title>
+  <title>System Histology – Digestive System IV: Pancreas & Salivary Glands Quiz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     * {
@@ -85,6 +85,12 @@
       background: rgba(15, 23, 42, 0.12);
       padding: 4px 8px;
       border-radius: 999px;
+    }
+
+    .quiz-note {
+      margin-top: 6px;
+      font-size: 0.8rem;
+      opacity: 0.9;
     }
 
     .quiz-body {
@@ -325,6 +331,18 @@
       text-align: center;
     }
 
+    .bottom-nav-wrapper {
+      margin-top: 6px;
+      text-align: right;
+    }
+
+    .bottom-nav-link {
+      font-size: 0.85rem;
+      color: #1d4ed8;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
     @media (max-width: 640px) {
       .quiz-logo {
         height: 38px;
@@ -349,16 +367,18 @@
             System Histology – Digestive System IV Quiz
           </div>
           <div class="quiz-header-subtitle">
-            Pancreas & Salivary Glands &middot; Free Topic-Based Quiz (No Explanations)
+            Free Topic-Based Quiz (No Explanations)
           </div>
         </div>
       </div>
       <div class="quiz-meta">
-        <span>Course: System Histology</span>
-        <span>Topic: Digestive IV (Pancreas & Salivary Glands)</span>
+        <span>Topic: Digestive System IV (Pancreas & Salivary Glands)</span>
         <span id="question-count-badge"></span>
         <span>Time: 1.5 minutes/question</span>
       </div>
+      <p class="quiz-note">
+        This free quiz has no explanations. For full explanations and case-based practice, access the Premium version.
+      </p>
     </header>
 
     <main class="quiz-body">
@@ -388,6 +408,16 @@
             <button class="btn btn-ghost" id="restart-btn">Restart</button>
             <button class="btn btn-primary" id="next-btn">Next →</button>
           </div>
+        </div>
+
+        <!-- Bottom navigation to course -->
+        <div class="bottom-nav-wrapper">
+          <a
+            href="https://easy-learns.com/system-histology/"
+            class="bottom-nav-link"
+          >
+            Back to System Histology Course
+          </a>
         </div>
       </section>
 
@@ -425,7 +455,7 @@
         </div>
 
         <div class="footer-note">
-          EasyLearn &middot; System Histology &middot; Digestive System IV Quiz
+          EasyLearn · System Histology · Digestive System IV Quiz
         </div>
       </section>
     </main>
@@ -433,230 +463,230 @@
 
   <script>
     // ==========================
-    // QUESTION BANK – system-histology/ topic 07 – Digestive System IV (Pancreas & Salivary Glands)
+    // QUESTION BANK – Topic 07 – Digestive System IV (Pancreas & Salivary Glands)
     // ==========================
     const questions = [
-  {
-    q: "Which of the following best describes the exocrine portion of the pancreas?",
-    subtitle: "Exocrine pancreas overview",
-    options: [
-      "Mucous tubuloacinar glands with short ducts",
-      "Serous acini secreting digestive enzymes into a duct system",
-      "Purely endocrine islets with no ducts",
-      "Mixed mucous and serous acini with many serous demilunes"
-    ],
-    answer: "Serous acini secreting digestive enzymes into a duct system"
-  },
-  {
-    q: "The cells that form the exocrine acini of the pancreas are characterized by:",
-    subtitle: "Pancreatic acinar cell morphology",
-    options: [
-      "Basophilic basal cytoplasm, eosinophilic apical zymogen granules",
-      "Clear cytoplasm with lipid droplets",
-      "Flattened squamous cytoplasm around a lumen",
-      "Strongly basophilic cytoplasm with many secretory granules at the base"
-    ],
-    answer: "Basophilic basal cytoplasm, eosinophilic apical zymogen granules"
-  },
-  {
-    q: "Which of the following enzymes is NOT produced by pancreatic acinar cells?",
-    subtitle: "Pancreatic enzyme profile",
-    options: [
-      "Trypsinogen",
-      "Amylase",
-      "Lipase",
-      "Pepsin"
-    ],
-    answer: "Pepsin"
-  },
-  {
-    q: "The initial segments of the pancreatic duct system that begin within the acini and are lined by centroacinar cells are called:",
-    subtitle: "Pancreatic duct hierarchy",
-    options: [
-      "Intercalated ducts",
-      "Striated ducts",
-      "Interlobular ducts",
-      "Main pancreatic duct"
-    ],
-    answer: "Intercalated ducts"
-  },
-  {
-    q: "Centroacinar cells are unique to the pancreas and are best described as:",
-    subtitle: "Centroacinar cell identity",
-    options: [
-      "Modified hepatocytes lining bile canaliculi",
-      "Duct cells located in the center of acini continuous with intercalated ducts",
-      "Endocrine cells scattered among acinar cells",
-      "Mucous cells forming serous demilunes"
-    ],
-    answer: "Duct cells located in the center of acini continuous with intercalated ducts"
-  },
-  {
-    q: "Which of the following correctly contrasts the exocrine pancreas with the parotid salivary gland?",
-    subtitle: "Pancreas vs parotid",
-    options: [
-      "Parotid gland has centroacinar cells; pancreas does not",
-      "Pancreas has centroacinar cells; parotid gland does not",
-      "Both structures contain mucous acini with demilunes",
-      "Parotid gland has extensive islets of Langerhans; pancreas does not"
-    ],
-    answer: "Pancreas has centroacinar cells; parotid gland does not"
-  },
-  {
-    q: "The endocrine portion of the pancreas is organized into:",
-    subtitle: "Islets of Langerhans",
-    options: [
-      "Acini with central lumina",
-      "Cords and clusters of pale-staining cells with fenestrated capillaries",
-      "Tubular glands with goblet cells",
-      "Striated ducts surrounded by serous acini"
-    ],
-    answer: "Cords and clusters of pale-staining cells with fenestrated capillaries"
-  },
-  {
-    q: "Which pancreatic endocrine cell type secretes insulin?",
-    subtitle: "Islet cell types",
-    options: [
-      "Alpha cells",
-      "Beta cells",
-      "Delta cells",
-      "PP (F) cells"
-    ],
-    answer: "Beta cells"
-  },
-  {
-    q: "Which hormone is secreted by pancreatic alpha cells?",
-    subtitle: "Alpha cell product",
-    options: [
-      "Insulin",
-      "Glucagon",
-      "Somatostatin",
-      "Pancreatic polypeptide"
-    ],
-    answer: "Glucagon"
-  },
-  {
-    q: "In a patient with long-standing type 1 diabetes mellitus, which islet cell population is primarily destroyed?",
-    subtitle: "Case: type 1 diabetes",
-    options: [
-      "Alpha cells producing glucagon",
-      "Beta cells producing insulin",
-      "Delta cells producing somatostatin",
-      "PP cells producing pancreatic polypeptide"
-    ],
-    answer: "Beta cells producing insulin"
-  },
-  {
-    q: "Which major salivary gland is composed almost entirely of serous acini?",
-    subtitle: "Parotid gland characteristics",
-    options: [
-      "Parotid gland",
-      "Submandibular gland",
-      "Sublingual gland",
-      "Minor labial glands"
-    ],
-    answer: "Parotid gland"
-  },
-  {
-    q: "The submandibular gland is best described histologically as:",
-    subtitle: "Submandibular gland composition",
-    options: [
-      "Purely serous with no mucous acini",
-      "Purely mucous with serous demilunes only",
-      "Mixed serous and mucous acini, predominantly serous",
-      "Mixed serous and mucous acini, predominantly mucous"
-    ],
-    answer: "Mixed serous and mucous acini, predominantly serous"
-  },
-  {
-    q: "Which major salivary gland contains predominantly mucous acini with numerous serous demilunes?",
-    subtitle: "Sublingual gland",
-    options: [
-      "Parotid gland",
-      "Submandibular gland",
-      "Sublingual gland",
-      "Von Ebner’s glands"
-    ],
-    answer: "Sublingual gland"
-  },
-  {
-    q: "Striated ducts of salivary glands are lined by:",
-    subtitle: "Striated duct epithelium",
-    options: [
-      "Simple squamous epithelium",
-      "Simple cuboidal epithelium with apical microvilli",
-      "Simple columnar epithelium with basal striations",
-      "Pseudostratified ciliated columnar epithelium"
-    ],
-    answer: "Simple columnar epithelium with basal striations"
-  },
-  {
-    q: "The basal striations seen in striated duct cells of salivary glands correspond to:",
-    subtitle: "Basal striation significance",
-    options: [
-      "Stacks of rough endoplasmic reticulum",
-      "Basal infoldings with aligned mitochondria for active ion transport",
-      "Bundles of actin and myosin filaments",
-      "Deposits of glycogen granules"
-    ],
-    answer: "Basal infoldings with aligned mitochondria for active ion transport"
-  },
-  {
-    q: "Which function is primarily associated with striated ducts of salivary glands?",
-    subtitle: "Striated duct function",
-    options: [
-      "Secretion of digestive enzymes",
-      "Modification of primary saliva by reabsorbing Na+ and secreting K+ and HCO3–",
-      "Production of immunoglobulin A (IgA)",
-      "Storage of vitamin A"
-    ],
-    answer: "Modification of primary saliva by reabsorbing Na+ and secreting K+ and HCO3–"
-  },
-  {
-    q: "Myoepithelial (basket) cells in salivary glands are located between:",
-    subtitle: "Myoepithelial cell location",
-    options: [
-      "Acinar cells and the lumen",
-      "Basal lamina and secretory/duct cells",
-      "Endothelial cells and blood plasma",
-      "Islet cells and acinar cells"
-    ],
-    answer: "Basal lamina and secretory/duct cells"
-  },
-  {
-    q: "A child has bilateral painless swelling of the parotid glands due to mumps. Which main secretion is reduced during the acute phase?",
-    subtitle: "Case: mumps in parotid",
-    options: [
-      "Mucous saliva rich in mucins",
-      "Serous, enzyme-rich saliva containing amylase",
-      "Bile-rich fluid",
-      "Pepsin-containing gastric juice"
-    ],
-    answer: "Serous, enzyme-rich saliva containing amylase"
-  },
-  {
-    q: "A 55-year-old woman presents with dry mouth (xerostomia) and dry eyes due to autoimmune destruction of salivary and lacrimal glands (Sjögren syndrome). Which cell types are primarily targeted?",
-    subtitle: "Case: Sjögren syndrome",
-    options: [
-      "Endocrine islet cells and hepatocytes",
-      "Serous and mucous acinar cells of salivary glands",
-      "Centroacinar cells and Kupffer cells",
-      "Paneth cells and goblet cells"
-    ],
-    answer: "Serous and mucous acinar cells of salivary glands"
-  },
-  {
-    q: "A tumor arising from the endocrine portion of the pancreas (e.g., insulinoma) most likely originates from:",
-    subtitle: "Case: pancreatic endocrine tumor",
-    options: [
-      "Centroacinar cells in the exocrine acini",
-      "Duct epithelial cells of the intercalated ducts",
-      "Islet cells such as beta cells",
-      "Myoepithelial cells in salivary glands"
-    ],
-    answer: "Islet cells such as beta cells"
-  }
-];
+      {
+        q: "Which of the following best describes the exocrine portion of the pancreas?",
+        subtitle: "Exocrine pancreas overview",
+        options: [
+          "Mucous tubuloacinar glands with short ducts",
+          "Serous acini secreting digestive enzymes into a duct system",
+          "Purely endocrine islets with no ducts",
+          "Mixed mucous and serous acini with many serous demilunes"
+        ],
+        answer: "Serous acini secreting digestive enzymes into a duct system"
+      },
+      {
+        q: "The cells that form the exocrine acini of the pancreas are characterized by:",
+        subtitle: "Pancreatic acinar cell morphology",
+        options: [
+          "Basophilic basal cytoplasm, eosinophilic apical zymogen granules",
+          "Clear cytoplasm with lipid droplets",
+          "Flattened squamous cytoplasm around a lumen",
+          "Strongly basophilic cytoplasm with many secretory granules at the base"
+        ],
+        answer: "Basophilic basal cytoplasm, eosinophilic apical zymogen granules"
+      },
+      {
+        q: "Which of the following enzymes is NOT produced by pancreatic acinar cells?",
+        subtitle: "Pancreatic enzyme profile",
+        options: [
+          "Trypsinogen",
+          "Amylase",
+          "Lipase",
+          "Pepsin"
+        ],
+        answer: "Pepsin"
+      },
+      {
+        q: "The initial segments of the pancreatic duct system that begin within the acini and are lined by centroacinar cells are called:",
+        subtitle: "Pancreatic duct hierarchy",
+        options: [
+          "Intercalated ducts",
+          "Striated ducts",
+          "Interlobular ducts",
+          "Main pancreatic duct"
+        ],
+        answer: "Intercalated ducts"
+      },
+      {
+        q: "Centroacinar cells are unique to the pancreas and are best described as:",
+        subtitle: "Centroacinar cell identity",
+        options: [
+          "Modified hepatocytes lining bile canaliculi",
+          "Duct cells located in the center of acini continuous with intercalated ducts",
+          "Endocrine cells scattered among acinar cells",
+          "Mucous cells forming serous demilunes"
+        ],
+        answer: "Duct cells located in the center of acini continuous with intercalated ducts"
+      },
+      {
+        q: "Which of the following correctly contrasts the exocrine pancreas with the parotid salivary gland?",
+        subtitle: "Pancreas vs parotid",
+        options: [
+          "Parotid gland has centroacinar cells; pancreas does not",
+          "Pancreas has centroacinar cells; parotid gland does not",
+          "Both structures contain mucous acini with demilunes",
+          "Parotid gland has extensive islets of Langerhans; pancreas does not"
+        ],
+        answer: "Pancreas has centroacinar cells; parotid gland does not"
+      },
+      {
+        q: "The endocrine portion of the pancreas is organized into:",
+        subtitle: "Islets of Langerhans",
+        options: [
+          "Acini with central lumina",
+          "Cords and clusters of pale-staining cells with fenestrated capillaries",
+          "Tubular glands with goblet cells",
+          "Striated ducts surrounded by serous acini"
+        ],
+        answer: "Cords and clusters of pale-staining cells with fenestrated capillaries"
+      },
+      {
+        q: "Which pancreatic endocrine cell type secretes insulin?",
+        subtitle: "Islet cell types",
+        options: [
+          "Alpha cells",
+          "Beta cells",
+          "Delta cells",
+          "PP (F) cells"
+        ],
+        answer: "Beta cells"
+      },
+      {
+        q: "Which hormone is secreted by pancreatic alpha cells?",
+        subtitle: "Alpha cell product",
+        options: [
+          "Insulin",
+          "Glucagon",
+          "Somatostatin",
+          "Pancreatic polypeptide"
+        ],
+        answer: "Glucagon"
+      },
+      {
+        q: "In a patient with long-standing type 1 diabetes mellitus, which islet cell population is primarily destroyed?",
+        subtitle: "Case: type 1 diabetes",
+        options: [
+          "Alpha cells producing glucagon",
+          "Beta cells producing insulin",
+          "Delta cells producing somatostatin",
+          "PP cells producing pancreatic polypeptide"
+        ],
+        answer: "Beta cells producing insulin"
+      },
+      {
+        q: "Which major salivary gland is composed almost entirely of serous acini?",
+        subtitle: "Parotid gland characteristics",
+        options: [
+          "Parotid gland",
+          "Submandibular gland",
+          "Sublingual gland",
+          "Minor labial glands"
+        ],
+        answer: "Parotid gland"
+      },
+      {
+        q: "The submandibular gland is best described histologically as:",
+        subtitle: "Submandibular gland composition",
+        options: [
+          "Purely serous with no mucous acini",
+          "Purely mucous with serous demilunes only",
+          "Mixed serous and mucous acini, predominantly serous",
+          "Mixed serous and mucous acini, predominantly mucous"
+        ],
+        answer: "Mixed serous and mucous acini, predominantly serous"
+      },
+      {
+        q: "Which major salivary gland contains predominantly mucous acini with numerous serous demilunes?",
+        subtitle: "Sublingual gland",
+        options: [
+          "Parotid gland",
+          "Submandibular gland",
+          "Sublingual gland",
+          "Von Ebner’s glands"
+        ],
+        answer: "Sublingual gland"
+      },
+      {
+        q: "Striated ducts of salivary glands are lined by:",
+        subtitle: "Striated duct epithelium",
+        options: [
+          "Simple squamous epithelium",
+          "Simple cuboidal epithelium with apical microvilli",
+          "Simple columnar epithelium with basal striations",
+          "Pseudostratified ciliated columnar epithelium"
+        ],
+        answer: "Simple columnar epithelium with basal striations"
+      },
+      {
+        q: "The basal striations seen in striated duct cells of salivary glands correspond to:",
+        subtitle: "Basal striation significance",
+        options: [
+          "Stacks of rough endoplasmic reticulum",
+          "Basal infoldings with aligned mitochondria for active ion transport",
+          "Bundles of actin and myosin filaments",
+          "Deposits of glycogen granules"
+        ],
+        answer: "Basal infoldings with aligned mitochondria for active ion transport"
+      },
+      {
+        q: "Which function is primarily associated with striated ducts of salivary glands?",
+        subtitle: "Striated duct function",
+        options: [
+          "Secretion of digestive enzymes",
+          "Modification of primary saliva by reabsorbing Na+ and secreting K+ and HCO3–",
+          "Production of immunoglobulin A (IgA)",
+          "Storage of vitamin A"
+        ],
+        answer: "Modification of primary saliva by reabsorbing Na+ and secreting K+ and HCO3–"
+      },
+      {
+        q: "Myoepithelial (basket) cells in salivary glands are located between:",
+        subtitle: "Myoepithelial cell location",
+        options: [
+          "Acinar cells and the lumen",
+          "Basal lamina and secretory/duct cells",
+          "Endothelial cells and blood plasma",
+          "Islet cells and acinar cells"
+        ],
+        answer: "Basal lamina and secretory/duct cells"
+      },
+      {
+        q: "A child has bilateral painless swelling of the parotid glands due to mumps. Which main secretion is reduced during the acute phase?",
+        subtitle: "Case: mumps in parotid",
+        options: [
+          "Mucous saliva rich in mucins",
+          "Serous, enzyme-rich saliva containing amylase",
+          "Bile-rich fluid",
+          "Pepsin-containing gastric juice"
+        ],
+        answer: "Serous, enzyme-rich saliva containing amylase"
+      },
+      {
+        q: "A 55-year-old woman presents with dry mouth (xerostomia) and dry eyes due to autoimmune destruction of salivary and lacrimal glands (Sjögren syndrome). Which cell types are primarily targeted?",
+        subtitle: "Case: Sjögren syndrome",
+        options: [
+          "Endocrine islet cells and hepatocytes",
+          "Serous and mucous acinar cells of salivary glands",
+          "Centroacinar cells and Kupffer cells",
+          "Paneth cells and goblet cells"
+        ],
+        answer: "Serous and mucous acinar cells of salivary glands"
+      },
+      {
+        q: "A tumor arising from the endocrine portion of the pancreas (e.g., insulinoma) most likely originates from:",
+        subtitle: "Case: pancreatic endocrine tumor",
+        options: [
+          "Centroacinar cells in the exocrine acini",
+          "Duct epithelial cells of the intercalated ducts",
+          "Islet cells such as beta cells",
+          "Myoepithelial cells in salivary glands"
+        ],
+        answer: "Islet cells such as beta cells"
+      }
+    ];
 
     // ==========================
     // QUIZ LOGIC
