@@ -364,15 +364,15 @@
         />
         <div class="quiz-header-texts">
           <div class="quiz-header-title">
-            Systemic Histology – Cardiovascular System: Blood Vessels and Heart Quiz
+            Systemic Histology – Cardiovascular System I: Blood Vessels Quiz
           </div>
           <div class="quiz-header-subtitle">
-            Cardiovascular System: Blood Vessels and Heart · Free Topic-Based Quiz (No Explanations)
+            Free Topic-Based Quiz (No Explanations)
           </div>
         </div>
       </div>
       <div class="quiz-meta">
-        <span>Topic: Cardiovascular System: Blood Vessels and Heart</span>
+        <span>Topic: Cardiovascular System: Blood Vessels</span>
         <span id="question-count-badge"></span>
         <span>Time: 1.5 minutes/question</span>
       </div>
@@ -462,229 +462,164 @@
     // QUESTION BANK
     // ==========================
     // 20 questions – basic + simple clinical, no explanations
+const questions = [
+  {
+    q: "Which layer of a muscular artery contains the greatest amount of smooth muscle cells?",
+    subtitle: "Basic structure of blood vessel walls",
+    options: [
+      "Tunica intima",
+      "Tunica media",
+      "Tunica adventitia",
+      "Internal elastic lamina"
+    ],
+    answer: "Tunica media"
+  },
+  {
+    q: "Which blood vessel type is primarily responsible for regulating peripheral vascular resistance and blood pressure?",
+    subtitle: "Functional histology of vessels",
+    options: [
+      "Elastic arteries",
+      "Muscular arteries",
+      "Arterioles",
+      "Venules"
+    ],
+    answer: "Arterioles"
+  },
+  {
+    q: "In a large elastic artery such as the aorta, which histologic feature helps maintain continuous blood flow during diastole?",
+    subtitle: "Elastic artery specialization",
+    options: [
+      "Thick tunica adventitia rich in collagen fibers",
+      "Multiple fenestrated elastic lamellae in the tunica media",
+      "Prominent vasa vasorum in the tunica intima",
+      "Continuous endothelium with tight junctions"
+    ],
+    answer: "Multiple fenestrated elastic lamellae in the tunica media"
+  },
+  {
+    q: "Which of the following best describes the endothelium lining all segments of the cardiovascular system?",
+    subtitle: "Endothelial cell type",
+    options: [
+      "Simple cuboidal epithelium",
+      "Simple squamous epithelium",
+      "Stratified squamous epithelium",
+      "Transitional epithelium"
+    ],
+    answer: "Simple squamous epithelium"
+  },
+  {
+    q: "A biopsy from a small vessel shows a single layer of smooth muscle cells and no clear internal elastic lamina. This vessel is most likely:",
+    subtitle: "Small vessel identification",
+    options: [
+      "Capillary",
+      "Venule",
+      "Arteriole",
+      "Muscular artery"
+    ],
+    answer: "Arteriole"
+  },
+  {
+    q: "Which vessel type has a relatively thicker tunica adventitia than tunica media and often contains valves?",
+    subtitle: "Comparing arteries and veins",
+    options: [
+      "Elastic artery",
+      "Muscular artery",
+      "Large vein",
+      "Arteriole"
+    ],
+    answer: "Large vein"
+  },
+  {
+    q: "Which type of capillary is characterized by a continuous endothelium and a continuous basal lamina with many pinocytotic vesicles?",
+    subtitle: "Capillary classifications",
+    options: [
+      "Continuous capillary",
+      "Fenestrated capillary",
+      "Sinusoidal capillary",
+      "Discontinuous capillary without basal lamina"
+    ],
+    answer: "Continuous capillary"
+  },
+  {
+    q: "Fenestrated capillaries are typically found in which of the following organs?",
+    subtitle: "Location of fenestrated capillaries",
+    options: [
+      "Skeletal muscle",
+      "Central nervous system",
+      "Renal glomeruli and endocrine glands",
+      "Thick skin of the palms"
+    ],
+    answer: "Renal glomeruli and endocrine glands"
+  },
+  {
+    q: "Sinusoidal capillaries (discontinuous) are a key feature of which organ?",
+    subtitle: "Location of sinusoidal capillaries",
+    options: [
+      "Kidney cortex",
+      "Liver",
+      "Skeletal muscle",
+      "Lung alveolar septa"
+    ],
+    answer: "Liver"
+  },
+  {
+    q: "In a histologic section of an elastic artery, the wavy lines stained darkly between smooth muscle cells represent:",
+    subtitle: "Identification of elastic structures",
+    options: [
+      "Collagen type I fibers",
+      "Reticular fibers",
+      "Elastic lamellae",
+      "Actin filaments"
+    ],
+    answer: "Elastic lamellae"
+  },
+  {
+    q: "Which feature helps distinguish a muscular artery from a vein of similar size in a histologic section?",
+    subtitle: "Distinguishing muscular artery vs vein",
+    options: [
+      "Thicker tunica adventitia in the artery",
+      "Irregular, collapsed lumen in the artery",
+      "Prominent internal elastic lamina in the artery",
+      "Endothelium present only in the artery"
+    ],
+    answer: "Prominent internal elastic lamina in the artery"
+  },
+  {
+    q: "A 60-year-old patient with long-standing hypertension shows marked thickening of small arteries with increased smooth muscle and narrowed lumen. This change is best described as:",
+    subtitle: "Case: vascular response to hypertension",
+    options: [
+      "Vessel atrophy",
+      "Hyperplasia and hypertrophy of smooth muscle in tunica media",
+      "Replacement of smooth muscle by adipocytes",
+      "Loss of the internal elastic lamina"
+    ],
+    answer: "Hyperplasia and hypertrophy of smooth muscle in tunica media"
+  },
+  {
+    q: "A 45-year-old man develops a deep vein thrombosis (DVT) in his lower limb. In which histologic region does the thrombus initially form?",
+    subtitle: "Case: venous thrombosis",
+    options: [
+      "Within the tunica media of the vein",
+      "On the luminal surface of the endothelium",
+      "Between tunica media and adventitia",
+      "Inside the vasa vasorum"
+    ],
+    answer: "On the luminal surface of the endothelium"
+  },
+  {
+    q: "A patient with chronic right-sided heart failure presents with distended neck veins. Which venous structural feature contributes to blood pooling and distension?",
+    subtitle: "Case: venous structure and failure",
+    options: [
+      "Absence of endothelium in large veins",
+      "Presence of multiple valves and a thin wall prone to dilation",
+      "Very thick tunica media in veins",
+      "Complete absence of adventitia"
+    ],
+    answer: "Presence of multiple valves and a thin wall prone to dilation"
+  }
+];
 
-    const questions = [
-      {
-        q: "Which layer of a muscular artery contains the greatest amount of smooth muscle cells?",
-        subtitle: "Basic structure of blood vessel walls",
-        options: [
-          "Tunica intima",
-          "Tunica media",
-          "Tunica adventitia",
-          "Internal elastic lamina"
-        ],
-        answer: "Tunica media"
-      },
-      {
-        q: "Which blood vessel type is primarily responsible for regulating peripheral vascular resistance and blood pressure?",
-        subtitle: "Functional histology of vessels",
-        options: [
-          "Elastic arteries",
-          "Muscular arteries",
-          "Arterioles",
-          "Venules"
-        ],
-        answer: "Arterioles"
-      },
-      {
-        q: "In a large elastic artery such as the aorta, which histologic feature helps maintain continuous blood flow during diastole?",
-        subtitle: "Elastic artery specialization",
-        options: [
-          "Thick tunica adventitia rich in collagen fibers",
-          "Multiple fenestrated elastic lamellae in the tunica media",
-          "Prominent vasa vasorum in the tunica intima",
-          "Continuous endothelium with tight junctions"
-        ],
-        answer: "Multiple fenestrated elastic lamellae in the tunica media"
-      },
-      {
-        q: "Which of the following best describes the endothelium lining all segments of the cardiovascular system?",
-        subtitle: "Endothelial cell type",
-        options: [
-          "Simple cuboidal epithelium",
-          "Simple squamous epithelium",
-          "Stratified squamous epithelium",
-          "Transitional epithelium"
-        ],
-        answer: "Simple squamous epithelium"
-      },
-      {
-        q: "A biopsy from a small vessel shows a single layer of smooth muscle cells and no clear internal elastic lamina. This vessel is most likely:",
-        subtitle: "Small vessel identification",
-        options: [
-          "Capillary",
-          "Venule",
-          "Arteriole",
-          "Muscular artery"
-        ],
-        answer: "Arteriole"
-      },
-      {
-        q: "Which vessel type has a relatively thicker tunica adventitia than tunica media and often contains valves?",
-        subtitle: "Comparing arteries and veins",
-        options: [
-          "Elastic artery",
-          "Muscular artery",
-          "Large vein",
-          "Arteriole"
-        ],
-        answer: "Large vein"
-      },
-      {
-        q: "Which type of capillary is characterized by a continuous endothelium and a continuous basal lamina with many pinocytotic vesicles?",
-        subtitle: "Capillary classifications",
-        options: [
-          "Continuous capillary",
-          "Fenestrated capillary",
-          "Sinusoidal capillary",
-          "Discontinuous capillary without basal lamina"
-        ],
-        answer: "Continuous capillary"
-      },
-      {
-        q: "Fenestrated capillaries are typically found in which of the following organs?",
-        subtitle: "Location of fenestrated capillaries",
-        options: [
-          "Skeletal muscle",
-          "Central nervous system",
-          "Renal glomeruli and endocrine glands",
-          "Thick skin of the palms"
-        ],
-        answer: "Renal glomeruli and endocrine glands"
-      },
-      {
-        q: "Sinusoidal capillaries (discontinuous) are a key feature of which organ?",
-        subtitle: "Location of sinusoidal capillaries",
-        options: [
-          "Kidney cortex",
-          "Liver",
-          "Skeletal muscle",
-          "Lung alveolar septa"
-        ],
-        answer: "Liver"
-      },
-      {
-        q: "Which heart layer is in direct contact with the blood in the cardiac chambers?",
-        subtitle: "Layers of the heart wall",
-        options: [
-          "Epicardium",
-          "Myocardium",
-          "Endocardium",
-          "Pericardium"
-        ],
-        answer: "Endocardium"
-      },
-      {
-        q: "The myocardium of the ventricles is composed mainly of:",
-        subtitle: "Cardiac muscle characteristics",
-        options: [
-          "Smooth muscle fibers with dense bodies",
-          "Skeletal muscle fibers with peripheral nuclei",
-          "Cardiac muscle fibers with central nuclei and branching cells",
-          "Fibroblasts arranged in bundles"
-        ],
-        answer: "Cardiac muscle fibers with central nuclei and branching cells"
-      },
-      {
-        q: "Which specialized structures connect cardiac muscle cells end-to-end and help synchronize contraction?",
-        subtitle: "Intercellular junctions in heart",
-        options: [
-          "Gap junctions at intercalated discs",
-          "Desmosomes at Z lines only",
-          "Hemidesmosomes on basal surfaces",
-          "Tight junctions in the sarcoplasmic reticulum"
-        ],
-        answer: "Gap junctions at intercalated discs"
-      },
-      {
-        q: "Purkinje fibers in the heart are best described as:",
-        subtitle: "Conduction system histology",
-        options: [
-          "Small, densely packed myocytes rich in myofibrils",
-          "Large, pale-staining cells rich in glycogen with fewer myofibrils",
-          "Fibroblasts that secrete collagen type I",
-          "Endothelial cells lining the endocardium"
-        ],
-        answer: "Large, pale-staining cells rich in glycogen with fewer myofibrils"
-      },
-      {
-        q: "In a histologic section of an elastic artery, the wavy lines stained darkly between smooth muscle cells represent:",
-        subtitle: "Identification of elastic structures",
-        options: [
-          "Collagen type I fibers",
-          "Reticular fibers",
-          "Elastic lamellae",
-          "Actin filaments"
-        ],
-        answer: "Elastic lamellae"
-      },
-      {
-        q: "Which feature helps distinguish a muscular artery from a vein of similar size in a histologic section?",
-        subtitle: "Distinguishing muscular artery vs vein",
-        options: [
-          "Thicker tunica adventitia in the artery",
-          "Irregular, collapsed lumen in the artery",
-          "Prominent internal elastic lamina in the artery",
-          "Endothelium present only in the artery"
-        ],
-        answer: "Prominent internal elastic lamina in the artery"
-      },
-      {
-        q: "A 60-year-old patient with long-standing hypertension shows marked thickening of small arteries with increased smooth muscle and narrowed lumen. This change is best described as:",
-        subtitle: "Case: vascular response to hypertension",
-        options: [
-          "Vessel atrophy",
-          "Hyperplasia and hypertrophy of smooth muscle in tunica media",
-          "Replacement of smooth muscle by adipocytes",
-          "Loss of the internal elastic lamina"
-        ],
-        answer: "Hyperplasia and hypertrophy of smooth muscle in tunica media"
-      },
-      {
-        q: "A 45-year-old man develops a deep vein thrombosis (DVT) in his lower limb. In which histologic region does the thrombus initially form?",
-        subtitle: "Case: venous thrombosis",
-        options: [
-          "Within the tunica media of the vein",
-          "On the luminal surface of the endothelium",
-          "Between tunica media and adventitia",
-          "Inside the vasa vasorum"
-        ],
-        answer: "On the luminal surface of the endothelium"
-      },
-      {
-        q: "A 5-year-old child with a congenital ventricular septal defect (VSD) has an abnormal opening in which part of the heart wall?",
-        subtitle: "Case: congenital heart defect location",
-        options: [
-          "Interatrial septum composed mostly of fibrous tissue",
-          "Interventricular septum containing thick myocardium",
-          "Epicardial fat surrounding the ventricles",
-          "Pericardial sac lining"
-        ],
-        answer: "Interventricular septum containing thick myocardium"
-      },
-      {
-        q: "A patient with chronic right-sided heart failure presents with distended neck veins. Which venous structural feature contributes to blood pooling and distension?",
-        subtitle: "Case: venous structure and failure",
-        options: [
-          "Absence of endothelium in large veins",
-          "Presence of multiple valves and a thin wall prone to dilation",
-          "Very thick tunica media in veins",
-          "Complete absence of adventitia"
-        ],
-        answer: "Presence of multiple valves and a thin wall prone to dilation"
-      },
-      {
-        q: "A biopsy from the myocardium at the apex of the left ventricle reveals cells with central nuclei, branching fibers, and intercalated discs. This tissue is primarily responsible for:",
-        subtitle: "Case: function of myocardium",
-        options: [
-          "Maintaining vascular tone in systemic arteries",
-          "Generating and transmitting action potentials in peripheral nerves",
-          "Rhythmic contraction to pump blood into the systemic circulation",
-          "Producing and modifying pericardial fluid"
-        ],
-        answer: "Rhythmic contraction to pump blood into the systemic circulation"
-      }
-    ];
+   
 
     // ==========================
     // QUIZ LOGIC
